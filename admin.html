@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | JIYA'S CAKE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#F3EEE6;
+
+color:#3d2f22;
+
+}
+
+/* Top bar */
+
+.topbar{
+
+height:70px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 40px;
+
+background:#2A211B;
+
+color:#fff;
+
+}
+
+.topbar .logo{
+
+font-family:"Playfair Display";
+
+font-size:26px;
+
+font-weight:900;
+
+color:#D9A86C;
+
+}
+
+.topbar .right{
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+font-size:14px;
+
+}
+
+.topbar .right span{
+
+color:#c9bcac;
+
+}
+
+.logout-btn{
+
+background:none;
+
+border:1px solid rgba(255,255,255,.3);
+
+color:#fff;
+
+padding:8px 18px;
+
+border-radius:30px;
+
+cursor:pointer;
+
+font-size:13px;
+
+transition:.3s;
+
+}
+
+.logout-btn:hover{
+
+background:rgba(255,255,255,.1);
+
+}
+
+/* Layout */
+
+.wrap{
+
+max-width:1300px;
+
+margin:0 auto;
+
+padding:36px 30px 80px;
+
+}
+
+.wrap h1{
+
+font-family:"Playfair Display";
+
+font-size:34px;
+
+color:#8D5D3B;
+
+margin-bottom:6px;
+
+}
+
+.wrap p.sub{
+
+color:#8a7c6c;
+
+margin-bottom:30px;
+
+}
+
+/* Stat cards */
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+margin-bottom:36px;
+
+}
+
+@media(max-width:900px){
+
+.stats{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+.stat-card{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:22px 24px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+}
+
+.stat-card .label{
+
+font-size:13px;
+
+color:#9c8d7b;
+
+margin-bottom:8px;
+
+}
+
+.stat-card .value{
+
+font-family:"Playfair Display";
+
+font-size:30px;
+
+color:#8D5D3B;
+
+font-weight:700;
+
+}
+
+/* Filter tabs */
+
+.filter-tabs{
+
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+margin-bottom:24px;
+
+}
+
+.filter-tabs button{
+
+padding:9px 18px;
+
+border:1px solid #e2d6c8;
+
+background:#fff;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:500;
+
+color:#7a5f45;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.filter-tabs button.active{
+
+background:#B5855A;
+
+border-color:#B5855A;
+
+color:#fff;
+
+}
+
+/* Orders table */
+
+.orders-panel{
+
+background:#fff;
+
+border-radius:22px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+overflow:hidden;
+
+}
+
+.order-card{
+
+border-bottom:1px solid #f0e8dc;
+
+padding:22px 26px;
+
+}
+
+.order-card:last-child{
+
+border-bottom:none;
+
+}
+
+.order-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+flex-wrap:wrap;
+
+gap:12px;
+
+margin-bottom:14px;
+
+}
+
+.order-id{
+
+font-size:12px;
+
+color:#aaa;
+
+}
+
+.order-email{
+
+font-weight:600;
+
+color:#5D4632;
+
+font-size:15px;
+
+}
+
+.order-date{
+
+font-size:12px;
+
+color:#999;
+
+margin-top:2px;
+
+}
+
+.order-total{
+
+font-family:"Playfair Display";
+
+font-size:22px;
+
+color:#8D5D3B;
+
+font-weight:700;
+
+}
+
+.status-badge{
+
+display:inline-block;
+
+padding:5px 14px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:600;
+
+text-transform:capitalize;
+
+}
+
+.status-pending_confirmation{background:#fdf0d5;color:#a5730f;}
+
+.status-confirmed{background:#dcefe0;color:#2e7d4f;}
+
+.status-preparing{background:#e0e8fd;color:#3355c9;}
+
+.status-out_for_delivery{background:#f1e0fd;color:#7a35c9;}
+
+.status-delivered{background:#dff5e4;color:#1f8a45;}
+
+.status-cancelled{background:#fde2e0;color:#c0392b;}
+
+.order-items{
+
+background:#FBF6EF;
+
+border-radius:14px;
+
+padding:14px 18px;
+
+margin-bottom:14px;
+
+}
+
+.order-item-line{
+
+display:flex;
+
+justify-content:space-between;
+
+font-size:13px;
+
+padding:6px 0;
+
+border-bottom:1px dashed #eadfcf;
+
+}
+
+.order-item-line:last-child{
+
+border-bottom:none;
+
+}
+
+.order-item-line .name{
+
+color:#5D4632;
+
+}
+
+.order-item-line .note{
+
+color:#999;
+
+font-size:12px;
+
+display:block;
+
+}
+
+.order-bottom{
+
+display:flex;
+
+justify-content:flex-end;
+
+align-items:center;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+}
+
+.order-bottom select{
+
+padding:8px 14px;
+
+border-radius:20px;
+
+border:1px solid #e2d6c8;
+
+font-size:13px;
+
+color:#5D4632;
+
+cursor:pointer;
+
+}
+
+/* Empty / loading */
+
+.empty-note{
+
+text-align:center;
+
+padding:60px 20px;
+
+color:#999;
+
+}
+
+/* Access gate */
+
+.gate{
+
+position:fixed;
+
+inset:0;
+
+background:#F3EEE6;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+flex-direction:column;
+
+gap:14px;
+
+z-index:999;
+
+text-align:center;
+
+padding:20px;
+
+}
+
+.gate i{
+
+font-size:40px;
+
+color:#B5855A;
+
+}
+
+.gate p{
+
+color:#8a7c6c;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Blocks the page until we confirm this person is actually an admin -->
+
+<div class="gate" id="gate">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+
+<p>Checking admin access...</p>
+
+</div>
+
+<div class="topbar">
+
+<div class="logo">JIYA'S CAKE — Admin</div>
+
+<div class="right">
+
+<span id="adminEmail"></span>
+
+<button class="logout-btn" onclick="auth.signOut().then(function(){window.location.href='admin-login.html';})">Log Out</button>
+
+</div>
+
+</div>
+
+<div class="wrap">
+
+<h1>Order Dashboard</h1>
+
+<p class="sub">Every order placed through checkout lands here in real time.</p>
+
+<div class="stats">
+
+<div class="stat-card">
+
+<div class="label">Total Orders</div>
+
+<div class="value" id="statTotal">0</div>
+
+</div>
+
+<div class="stat-card">
+
+<div class="label">Pending Confirmation</div>
+
+<div class="value" id="statPending">0</div>
+
+</div>
+
+<div class="stat-card">
+
+<div class="label">In Progress</div>
+
+<div class="value" id="statProgress">0</div>
+
+</div>
+
+<div class="stat-card">
+
+<div class="label">Revenue (all orders)</div>
+
+<div class="value" id="statRevenue">₹0</div>
+
+</div>
+
+</div>
+
+<div class="filter-tabs" id="filterTabs">
+
+<button class="active" data-filter="all">All</button>
+
+<button data-filter="pending_confirmation">Pending Confirmation</button>
+
+<button data-filter="confirmed">Confirmed</button>
+
+<button data-filter="preparing">Preparing</button>
+
+<button data-filter="out_for_delivery">Out for Delivery</button>
+
+<button data-filter="delivered">Delivered</button>
+
+<button data-filter="cancelled">Cancelled</button>
+
+</div>
+
+<div class="orders-panel" id="ordersPanel">
+
+<div class="empty-note">Loading orders...</div>
+
+</div>
+
+</div>
+
+<!-- ============================================================
+     FIREBASE — same project as the rest of the site. This page
+     requires:
+     1. The Firestore "admins" collection set up (see admin-login.html
+        for exact steps).
+     2. The Firestore security rules from admin-login.html applied,
+        so only admin accounts can actually read every order.
+     ============================================================ -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+
+const firebaseConfig={
+
+apiKey:"AIzaSyBLkIEo6Cdnh-9-CanKo5EhqgdRyghmPEw",
+
+authDomain:"jiya-s-cake.firebaseapp.com",
+
+projectId:"jiya-s-cake",
+
+storageBucket:"jiya-s-cake.firebasestorage.app",
+
+messagingSenderId:"319442668206",
+
+appId:"1:319442668206:web:2f3cf2bdce218c2816bb3f"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth=firebase.auth();
+
+const db=firebase.firestore();
+
+</script>
+
+<script>
+
+let allOrders=[];
+
+let currentFilter="all";
+
+const STATUS_OPTIONS=["pending_confirmation","confirmed","preparing","out_for_delivery","delivered","cancelled"];
+
+function formatStatus(status){
+
+return status.replace(/_/g," ");
+
+}
+
+function formatDate(ts){
+
+if(!ts||!ts.toDate)return"";
+
+return ts.toDate().toLocaleString("en-IN",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
+
+}
+
+function renderOrders(){
+
+const panel=document.getElementById("ordersPanel");
+
+const filtered=currentFilter==="all"?allOrders:allOrders.filter(function(o){return o.status===currentFilter;});
+
+if(filtered.length===0){
+
+panel.innerHTML="<div class=\"empty-note\">No orders in this category yet.</div>";
+
+return;
+
+}
+
+panel.innerHTML="";
+
+filtered.forEach(function(order){
+
+const card=document.createElement("div");
+
+card.className="order-card";
+
+let itemsHtml="";
+
+(order.items||[]).forEach(function(item){
+
+itemsHtml+=
+
+"<div class=\"order-item-line\">"+
+
+"<div class=\"name\">"+item.title+" — "+item.weight+" × "+item.qty+
+
+(item.message?"<span class=\"note\">Message: "+item.message+"</span>":"")+
+
+(item.instructions?"<span class=\"note\">Note: "+item.instructions+"</span>":"")+
+
+"</div>"+
+
+"<div>₹"+item.lineTotal+"</div>"+
+
+"</div>";
+
+});
+
+let optionsHtml="";
+
+STATUS_OPTIONS.forEach(function(s){
+
+optionsHtml+="<option value=\""+s+"\""+(s===order.status?" selected":"")+">"+formatStatus(s)+"</option>";
+
+});
+
+card.innerHTML=
+
+"<div class=\"order-top\">"+
+
+"<div>"+
+
+"<div class=\"order-email\">"+(order.customerEmail||"Unknown customer")+"</div>"+
+
+"<div class=\"order-date\">"+formatDate(order.createdAt)+" · <span class=\"order-id\">"+order.id+"</span></div>"+
+
+"</div>"+
+
+"<div style=\"text-align:right;\">"+
+
+"<div class=\"order-total\">₹"+order.total+"</div>"+
+
+"<span class=\"status-badge status-"+order.status+"\">"+formatStatus(order.status)+"</span>"+
+
+"</div>"+
+
+"</div>"+
+
+"<div class=\"order-items\">"+itemsHtml+"</div>"+
+
+"<div class=\"order-bottom\">"+
+
+"<select onchange=\"updateStatus('"+order.id+"',this.value)\">"+optionsHtml+"</select>"+
+
+"</div>";
+
+panel.appendChild(card);
+
+});
+
+}
+
+function updateStats(){
+
+document.getElementById("statTotal").innerHTML=allOrders.length;
+
+document.getElementById("statPending").innerHTML=allOrders.filter(function(o){return o.status==="pending_confirmation";}).length;
+
+document.getElementById("statProgress").innerHTML=allOrders.filter(function(o){return o.status==="confirmed"||o.status==="preparing"||o.status==="out_for_delivery";}).length;
+
+const revenue=allOrders.reduce(function(sum,o){return sum+(o.total||0);},0);
+
+document.getElementById("statRevenue").innerHTML="₹"+revenue;
+
+}
+
+function updateStatus(orderId,newStatus){
+
+db.collection("orders").doc(orderId).update({status:newStatus}).catch(function(err){
+
+alert("Couldn't update status: "+err.message);
+
+});
+
+}
+
+document.getElementById("filterTabs").addEventListener("click",function(e){
+
+if(e.target.tagName!=="BUTTON")return;
+
+document.querySelectorAll("#filterTabs button").forEach(function(b){b.classList.remove("active");});
+
+e.target.classList.add("active");
+
+currentFilter=e.target.dataset.filter;
+
+renderOrders();
+
+});
+
+function loadOrders(){
+
+db.collection("orders").orderBy("createdAt","desc").onSnapshot(function(snapshot){
+
+allOrders=snapshot.docs.map(function(doc){
+
+return Object.assign({id:doc.id},doc.data());
+
+});
+
+updateStats();
+
+renderOrders();
+
+},function(err){
+
+document.getElementById("ordersPanel").innerHTML="<div class=\"empty-note\">Couldn't load orders: "+err.message+"</div>";
+
+});
+
+}
+
+/* ---------- Access gate ---------- */
+
+auth.onAuthStateChanged(function(user){
+
+if(!user){
+
+window.location.href="admin-login.html";
+
+return;
+
+}
+
+db.collection("admins").doc(user.uid).get().then(function(doc){
+
+if(!doc.exists){
+
+auth.signOut();
+
+window.location.href="admin-login.html";
+
+return;
+
+}
+
+document.getElementById("adminEmail").innerHTML=user.email;
+
+document.getElementById("gate").style.display="none";
+
+loadOrders();
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

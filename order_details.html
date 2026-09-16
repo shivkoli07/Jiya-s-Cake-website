@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order Details | JIYA'S CAKE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#F8F4EC;
+overflow-x:hidden;
+color:#5D4632;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(#d7c4ae 1px,transparent 1px);
+
+background-size:22px 22px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+/* Navbar (same as gallery.html) */
+
+nav{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:70px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 70px;
+
+background:rgba(255,255,255,.72);
+
+backdrop-filter:blur(18px);
+
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-family:"Playfair Display";
+
+font-size:38px;
+
+font-weight:900;
+
+color:#9A6845;
+
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:35px;
+
+}
+
+nav ul li{
+
+cursor:pointer;
+
+font-weight:500;
+
+transition:.35s;
+
+}
+
+nav ul li:hover{
+
+color:#B5855A;
+
+}
+
+.icons{
+
+display:flex;
+
+gap:20px;
+
+font-size:20px;
+
+color:#9A6845;
+
+align-items:center;
+
+}
+
+.icons i{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.icons i:hover{
+
+transform:scale(1.15);
+
+}
+
+.user-chip{
+
+display:none;
+
+align-items:center;
+
+gap:8px;
+
+background:#F1E6D8;
+
+padding:6px 16px;
+
+border-radius:30px;
+
+font-size:14px;
+
+color:#8D5D3B;
+
+font-weight:500;
+
+}
+
+.user-chip.active{
+
+display:flex;
+
+}
+
+.user-chip i{
+
+font-size:14px;
+
+}
+
+/* Hero */
+
+.hero{
+
+padding-top:140px;
+
+padding-bottom:40px;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-family:"Playfair Display";
+
+font-size:52px;
+
+color:#8D5D3B;
+
+margin-bottom:12px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+color:#777;
+
+}
+
+/* Layout */
+
+.order-wrap{
+
+width:92%;
+
+max-width:1100px;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:40px;
+
+padding-bottom:100px;
+
+align-items:start;
+
+}
+
+@media(max-width:900px){
+
+.order-wrap{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+.panel{
+
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(15px);
+
+border-radius:26px;
+
+box-shadow:0 20px 35px rgba(0,0,0,.08);
+
+overflow:hidden;
+
+}
+
+/* Items panel — list of every cake in the cart */
+
+.items-panel{
+
+padding:24px;
+
+max-height:640px;
+
+overflow-y:auto;
+
+}
+
+.items-panel h3{
+
+font-family:"Playfair Display";
+
+font-size:22px;
+
+color:#8D5D3B;
+
+margin-bottom:16px;
+
+padding:0 4px;
+
+}
+
+.item-row{
+
+display:flex;
+
+gap:16px;
+
+background:#FBF6EF;
+
+border:1px solid #eee0cd;
+
+border-radius:18px;
+
+padding:14px;
+
+margin-bottom:14px;
+
+}
+
+.item-row:last-child{
+
+margin-bottom:0;
+
+}
+
+.item-video{
+
+width:90px;
+
+height:90px;
+
+border-radius:14px;
+
+overflow:hidden;
+
+flex-shrink:0;
+
+position:relative;
+
+}
+
+.item-video video{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transform:scale(1.22);
+
+transform-origin:center center;
+
+display:block;
+
+}
+
+.item-info{
+
+flex:1;
+
+min-width:0;
+
+}
+
+.item-info h4{
+
+font-family:"Playfair Display";
+
+font-size:18px;
+
+color:#8D5D3B;
+
+margin-bottom:4px;
+
+}
+
+.item-meta{
+
+font-size:12px;
+
+color:#888;
+
+margin-bottom:8px;
+
+line-height:18px;
+
+}
+
+.item-meta b{
+
+color:#7a5f45;
+
+}
+
+.item-bottom{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.item-qty{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.item-qty button{
+
+width:26px;
+
+height:26px;
+
+border:none;
+
+border-radius:50%;
+
+background:#F1E6D8;
+
+color:#8D5D3B;
+
+font-size:15px;
+
+cursor:pointer;
+
+}
+
+.item-qty button:hover{
+
+background:#B5855A;
+
+color:#fff;
+
+}
+
+.item-price{
+
+font-weight:700;
+
+color:#8D5D3B;
+
+font-size:15px;
+
+}
+
+.item-remove{
+
+background:none;
+
+border:none;
+
+color:#c0392b;
+
+font-size:14px;
+
+cursor:pointer;
+
+padding:4px;
+
+}
+
+.item-remove:hover{
+
+text-decoration:underline;
+
+}
+
+/* Customize / summary panel */
+
+.summary-body{
+
+padding:26px 30px;
+
+}
+
+.summary-body h3{
+
+font-family:"Playfair Display";
+
+font-size:24px;
+
+color:#8D5D3B;
+
+margin-bottom:18px;
+
+}
+
+.row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:16px;
+
+font-size:15px;
+
+}
+
+.row span:first-child{
+
+color:#777;
+
+}
+
+.row span:last-child{
+
+font-weight:600;
+
+color:#5D4632;
+
+}
+
+.qty-control{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+}
+
+.qty-control button{
+
+width:32px;
+
+height:32px;
+
+border:none;
+
+border-radius:50%;
+
+background:#F1E6D8;
+
+color:#8D5D3B;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+.qty-control button:hover{
+
+background:#B5855A;
+
+color:#fff;
+
+}
+
+hr{
+
+border:none;
+
+border-top:1px dashed #e2d6c8;
+
+margin:18px 0;
+
+}
+
+.total-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+font-size:20px;
+
+font-weight:700;
+
+color:#8D5D3B;
+
+margin-bottom:22px;
+
+}
+
+.field-note{
+
+background:#FBF6EF;
+
+border:1px solid #eee0cd;
+
+border-radius:16px;
+
+padding:14px 18px;
+
+font-size:14px;
+
+color:#7a5f45;
+
+margin-bottom:20px;
+
+line-height:22px;
+
+}
+
+.proceed-btn{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:40px;
+
+background:#B5855A;
+
+color:white;
+
+font-size:17px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.proceed-btn:hover{
+
+background:#8D5D3B;
+
+}
+
+.proceed-btn:disabled{
+
+background:#ddd;
+
+cursor:not-allowed;
+
+}
+
+/* Payment panel */
+
+.pay-wrap{
+
+width:92%;
+
+max-width:500px;
+
+margin:0 auto 100px auto;
+
+}
+
+.pay-body{
+
+padding:30px 34px;
+
+text-align:center;
+
+}
+
+.pay-body h3{
+
+font-family:"Playfair Display";
+
+font-size:26px;
+
+color:#8D5D3B;
+
+margin-bottom:8px;
+
+}
+
+.pay-sub{
+
+color:#666;
+
+font-size:14px;
+
+margin-bottom:20px;
+
+line-height:22px;
+
+}
+
+.qr-image{
+
+width:220px;
+
+height:220px;
+
+object-fit:contain;
+
+border:1px solid #eee0cd;
+
+border-radius:20px;
+
+padding:14px;
+
+background:#fff;
+
+margin-bottom:14px;
+
+}
+
+.upi-id{
+
+font-size:14px;
+
+color:#8D5D3B;
+
+font-weight:600;
+
+margin-bottom:20px;
+
+}
+
+/* Auth modal */
+
+.modal{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.45);
+
+backdrop-filter:blur(8px);
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.3s;
+
+z-index:5000;
+
+}
+
+.modal.active{
+
+opacity:1;
+
+visibility:visible;
+
+}
+
+.auth-box{
+
+width:420px;
+
+max-width:90%;
+
+background:#fff;
+
+border-radius:26px;
+
+padding:36px 32px;
+
+position:relative;
+
+box-shadow:0 30px 60px rgba(0,0,0,.2);
+
+}
+
+.auth-box .close{
+
+position:absolute;
+
+top:16px;
+
+right:20px;
+
+font-size:26px;
+
+cursor:pointer;
+
+color:#888;
+
+}
+
+.auth-box h2{
+
+font-family:"Playfair Display";
+
+font-size:28px;
+
+color:#8D5D3B;
+
+margin-bottom:6px;
+
+text-align:center;
+
+}
+
+.auth-box p.sub{
+
+text-align:center;
+
+color:#888;
+
+font-size:13px;
+
+margin-bottom:22px;
+
+}
+
+.auth-tabs{
+
+display:flex;
+
+background:#F1E6D8;
+
+border-radius:30px;
+
+padding:4px;
+
+margin-bottom:22px;
+
+}
+
+.auth-tabs button{
+
+flex:1;
+
+padding:9px;
+
+border:none;
+
+background:transparent;
+
+border-radius:26px;
+
+cursor:pointer;
+
+font-size:14px;
+
+font-weight:500;
+
+color:#8D5D3B;
+
+}
+
+.auth-tabs button.active{
+
+background:#B5855A;
+
+color:#fff;
+
+}
+
+.auth-box input{
+
+width:100%;
+
+padding:13px 16px;
+
+border:1px solid #e2d6c8;
+
+border-radius:14px;
+
+margin-bottom:14px;
+
+font-size:14px;
+
+outline:none;
+
+}
+
+.auth-box input:focus{
+
+border-color:#B5855A;
+
+}
+
+.auth-submit{
+
+width:100%;
+
+padding:13px;
+
+border:none;
+
+border-radius:30px;
+
+background:#B5855A;
+
+color:#fff;
+
+font-size:15px;
+
+font-weight:600;
+
+cursor:pointer;
+
+margin-bottom:16px;
+
+}
+
+.auth-submit:hover{
+
+background:#8D5D3B;
+
+}
+
+.divider{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+color:#aaa;
+
+font-size:12px;
+
+margin-bottom:16px;
+
+}
+
+.divider::before,
+.divider::after{
+
+content:"";
+
+flex:1;
+
+height:1px;
+
+background:#eee;
+
+}
+
+.google-btn{
+
+width:100%;
+
+padding:12px;
+
+border:1px solid #e2d6c8;
+
+border-radius:30px;
+
+background:#fff;
+
+font-size:14px;
+
+font-weight:500;
+
+color:#5D4632;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+}
+
+.google-btn:hover{
+
+background:#f8f4ec;
+
+}
+
+.auth-error{
+
+color:#c0392b;
+
+font-size:13px;
+
+text-align:center;
+
+margin-bottom:10px;
+
+display:none;
+
+}
+
+.auth-error.show{
+
+display:block;
+
+}
+
+/* Empty state (no cake chosen yet) */
+
+.empty-state{
+
+width:90%;
+
+max-width:600px;
+
+margin:160px auto;
+
+text-align:center;
+
+}
+
+.empty-state h2{
+
+font-family:"Playfair Display";
+
+font-size:32px;
+
+color:#8D5D3B;
+
+margin-bottom:14px;
+
+}
+
+.empty-state p{
+
+color:#777;
+
+margin-bottom:24px;
+
+}
+
+.empty-state a{
+
+display:inline-block;
+
+padding:14px 30px;
+
+border-radius:40px;
+
+background:#B5855A;
+
+color:#fff;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">JIYA'S CAKE</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">Home</li>
+<li onclick="window.location.href='gallery.html'">Gallery</li>
+<li onclick="window.location.href='About.html'">About</li>
+<li onclick="window.location.href='Contact.html'">Contact</li>
+
+</ul>
+
+<div class="icons">
+
+<div class="user-chip" id="userChip">
+
+<i class="fa-solid fa-circle-user"></i>
+
+<span id="userChipEmail"></span>
+
+<i class="fa-solid fa-right-from-bracket" title="Log out" onclick="logOut()" style="cursor:pointer;margin-left:4px;"></i>
+
+</div>
+
+<i class="fa-solid fa-cart-shopping" onclick="window.location.href='Cart.html'" style="cursor:pointer;"></i>
+
+<i class="fa-solid fa-receipt" onclick="window.location.href='order-history.html'" style="cursor:pointer;" title="My Orders"></i>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>Checkout</h1>
+
+<p>Review everything in your cart, then sign in to complete payment.</p>
+
+</section>
+
+<!-- Shown only if there are items in the cart -->
+
+<div class="order-wrap" id="orderWrap" style="display:none;">
+
+<div class="panel items-panel" id="itemsPanel">
+
+</div>
+
+<div class="panel">
+
+<div class="summary-body">
+
+<h3>Order Summary</h3>
+
+<div class="row">
+
+<span>Items</span>
+
+<span id="itemCountRow">0</span>
+
+</div>
+
+<div class="row">
+
+<span>Subtotal</span>
+
+<span id="subtotalRow">₹0</span>
+
+</div>
+
+<hr>
+
+<div class="total-row">
+
+<span>Total</span>
+
+<span id="totalPrice">₹0</span>
+
+</div>
+
+<div class="field-note">
+
+<i class="fa-solid fa-circle-info"></i>
+
+Delivery address and exact delivery time will be confirmed by our team over a call after payment.
+
+</div>
+
+<button class="proceed-btn" id="proceedBtn" onclick="handleProceed()">
+
+Proceed to Payment
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Shown only after the customer logs in, replacing the proceed button -->
+
+<div class="pay-wrap" id="payWrap" style="display:none;">
+
+<div class="panel pay-panel">
+
+<div class="pay-body">
+
+<h3>Scan &amp; Pay</h3>
+
+<p class="pay-sub">Scan this QR code with any UPI app (GPay, PhonePe, Paytm) to pay <b id="payAmount">₹0</b></p>
+
+<img src="assets/images/upi-qr.png" alt="UPI QR Code" class="qr-image">
+
+<p class="upi-id">UPI ID: <span id="upiIdDisplay"></span></p>
+
+<div class="field-note">
+
+<i class="fa-solid fa-circle-info"></i>
+
+After paying, tap "I've Paid" below — it opens your email app with your order details filled in. Send it to us and we'll confirm your order right after.
+
+</div>
+
+<button class="proceed-btn" onclick="notifyPaymentViaEmail()">
+
+I've Paid — Notify Us
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Shown only if the cart is empty -->
+
+<div class="empty-state" id="emptyState" style="display:none;">
+
+<h2>Your cart is empty</h2>
+
+<p>Head back to the gallery, pick some cakes, and add them to your cart to check out.</p>
+
+<a href="gallery.html">Browse Gallery</a>
+
+</div>
+
+<!-- Login / Signup modal, triggered only when user clicks Proceed to Payment -->
+
+<div class="modal" id="authModal">
+
+<div class="auth-box">
+
+<span class="close" onclick="closeAuthModal()">&times;</span>
+
+<h2>Sign in to continue</h2>
+
+<p class="sub">Login is required only to complete payment for your order.</p>
+
+<div class="auth-tabs">
+
+<button id="tabSignIn" class="active" onclick="switchTab('signin')">Sign In</button>
+
+<button id="tabSignUp" onclick="switchTab('signup')">Sign Up</button>
+
+</div>
+
+<p class="auth-error" id="authError"></p>
+
+<input type="email" id="authEmail" placeholder="Email address">
+
+<input type="password" id="authPassword" placeholder="Password">
+
+<button class="auth-submit" id="authSubmitBtn" onclick="submitAuth()">Sign In</button>
+
+<div class="divider">or</div>
+
+<button class="google-btn" onclick="signInWithGoogle()">
+
+<i class="fa-brands fa-google"></i> Continue with Google
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ============================================================
+     FIREBASE SETUP
+     1. Go to console.firebase.google.com → create a project (free).
+     2. Add a Web App inside the project, copy the config object it
+        gives you, and paste it below in place of the placeholders.
+     3. In the console, go to Authentication → Sign-in method, and
+        enable "Email/Password" and "Google".
+     4. That's it — this file needs no backend to authenticate users.
+     ============================================================ -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+
+const firebaseConfig={
+
+apiKey:"AIzaSyBLkIEo6Cdnh-9-CanKo5EhqgdRyghmPEw",
+
+authDomain:"jiya-s-cake.firebaseapp.com",
+
+projectId:"jiya-s-cake",
+
+storageBucket:"jiya-s-cake.firebasestorage.app",
+
+messagingSenderId:"319442668206",
+
+appId:"1:319442668206:web:2f3cf2bdce218c2816bb3f"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth=firebase.auth();
+
+const db=firebase.firestore();
+
+</script>
+
+<!-- ============================================================
+     PAYMENT SETUP (UPI QR code)
+     1. Save a screenshot/export of your UPI QR code (from GPay,
+        PhonePe, Paytm, etc.) as assets/images/upi-qr.png
+     2. Replace ORDERS_EMAIL and UPI_ID below with your real ones.
+     No payment gateway or backend needed — this shows the QR code,
+     and the "I've Paid" button opens the customer's email app with
+     the order details pre-filled, so you can manually confirm the
+     payment came in before starting the order.
+     ============================================================ -->
+
+<script>
+
+const ORDERS_EMAIL="orders@jiyascake.com";
+
+const UPI_ID="jiyascake@upi";
+
+</script>
+
+<script>
+
+let cart=[];
+
+/* Weight multipliers applied on top of the base price shown on the gallery card */
+
+const weightMultiplier={
+
+"500g":1,
+
+"1 Kg":1.8,
+
+"2 Kg":3.4,
+
+"Custom":1
+
+};
+
+function parsePrice(priceStr){
+
+return Number(priceStr.replace(/[^0-9.]/g,""))||0;
+
+}
+
+function itemUnitPrice(item){
+
+const base=parsePrice(item.price);
+
+const mult=weightMultiplier[item.weight]||1;
+
+return Math.round(base*mult);
+
+}
+
+function saveCart(){
+
+localStorage.setItem("jiyasCakeCart",JSON.stringify(cart));
+
+}
+
+function renderCart(){
+
+const panel=document.getElementById("itemsPanel");
+
+panel.innerHTML="<h3>Your Order</h3>";
+
+cart.forEach(function(item){
+
+const lineTotal=itemUnitPrice(item)*item.qty;
+
+const row=document.createElement("div");
+
+row.className="item-row";
+
+row.innerHTML=
+
+"<div class=\"item-video\"><video autoplay muted loop playsinline><source src=\""+item.video+"\" type=\"video/mp4\"></video></div>"+
+
+"<div class=\"item-info\">"+
+
+"<h4>"+item.title+"</h4>"+
+
+"<div class=\"item-meta\"><b>"+item.weight+"</b>"+
+
+(item.message?" · Message: "+item.message:"")+
+
+(item.instructions?" · Note: "+item.instructions:"")+
+
+"</div>"+
+
+"<div class=\"item-bottom\">"+
+
+"<div class=\"item-qty\">"+
+
+"<button onclick=\"changeItemQty('"+item.id+"',-1)\">−</button>"+
+
+"<span>"+item.qty+"</span>"+
+
+"<button onclick=\"changeItemQty('"+item.id+"',1)\">+</button>"+
+
+"</div>"+
+
+"<span class=\"item-price\">₹"+lineTotal+"</span>"+
+
+"<button class=\"item-remove\" onclick=\"removeItem('"+item.id+"')\">Remove</button>"+
+
+"</div>"+
+
+"</div>";
+
+panel.appendChild(row);
+
+});
+
+updateTotals();
+
+}
+
+function cartTotal(){
+
+return cart.reduce(function(sum,item){
+
+return sum+itemUnitPrice(item)*item.qty;
+
+},0);
+
+}
+
+function cartItemCount(){
+
+return cart.reduce(function(sum,item){
+
+return sum+item.qty;
+
+},0);
+
+}
+
+function updateTotals(){
+
+const total=cartTotal();
+
+document.getElementById("itemCountRow").innerHTML=cartItemCount();
+
+document.getElementById("subtotalRow").innerHTML="₹"+total;
+
+document.getElementById("totalPrice").innerHTML="₹"+total;
+
+}
+
+function changeItemQty(id,delta){
+
+const item=cart.find(function(i){return i.id===id;});
+
+if(!item)return;
+
+item.qty=Math.max(1,item.qty+delta);
+
+saveCart();
+
+renderCart();
+
+}
+
+function removeItem(id){
+
+cart=cart.filter(function(i){return i.id!==id;});
+
+saveCart();
+
+if(cart.length===0){
+
+document.getElementById("orderWrap").style.display="none";
+
+document.getElementById("payWrap").style.display="none";
+
+document.getElementById("emptyState").style.display="block";
+
+return;
+
+}
+
+renderCart();
+
+}
+
+function handleProceed(){
+
+if(auth.currentUser){
+
+showPaymentPanel();
+
+}else{
+
+openAuthModal();
+
+}
+
+}
+
+/* ---------- Auth modal ---------- */
+
+let authMode="signin";
+
+function openAuthModal(){
+
+document.getElementById("authModal").classList.add("active");
+
+}
+
+function closeAuthModal(){
+
+document.getElementById("authModal").classList.remove("active");
+
+document.getElementById("authError").classList.remove("show");
+
+}
+
+function switchTab(mode){
+
+authMode=mode;
+
+document.getElementById("tabSignIn").classList.toggle("active",mode==="signin");
+
+document.getElementById("tabSignUp").classList.toggle("active",mode==="signup");
+
+document.getElementById("authSubmitBtn").innerHTML=mode==="signin"?"Sign In":"Create Account";
+
+document.getElementById("authError").classList.remove("show");
+
+}
+
+function showAuthError(msg){
+
+const el=document.getElementById("authError");
+
+el.innerHTML=msg;
+
+el.classList.add("show");
+
+}
+
+function submitAuth(){
+
+const email=document.getElementById("authEmail").value.trim();
+
+const password=document.getElementById("authPassword").value;
+
+if(!email||!password){
+
+showAuthError("Please enter both email and password.");
+
+return;
+
+}
+
+const action=authMode==="signin"
+
+?auth.signInWithEmailAndPassword(email,password)
+
+:auth.createUserWithEmailAndPassword(email,password);
+
+action.then(function(){
+
+closeAuthModal();
+
+showPaymentPanel();
+
+}).catch(function(err){
+
+showAuthError(err.message);
+
+});
+
+}
+
+function signInWithGoogle(){
+
+const provider=new firebase.auth.GoogleAuthProvider();
+
+auth.signInWithPopup(provider).then(function(){
+
+closeAuthModal();
+
+showPaymentPanel();
+
+}).catch(function(err){
+
+showAuthError(err.message);
+
+});
+
+}
+
+/* Keep the nav chip and proceed button in sync with login state,
+
+   including when the user was already logged in from a past visit */
+
+auth.onAuthStateChanged(function(user){
+
+const chip=document.getElementById("userChip");
+
+if(user){
+
+chip.classList.add("active");
+
+document.getElementById("userChipEmail").innerHTML=user.email||user.displayName||"Account";
+
+}else{
+
+chip.classList.remove("active");
+
+}
+
+});
+
+function logOut(){
+
+auth.signOut().then(function(){
+
+/* Hide the payment panel and bring back the Proceed button so a fresh
+
+   login is required before paying again */
+
+document.getElementById("payWrap").style.display="none";
+
+const proceedBtn=document.getElementById("proceedBtn");
+
+if(proceedBtn)proceedBtn.style.display="block";
+
+});
+
+}
+
+/* ---------- Payment ---------- */
+
+function showPaymentPanel(){
+
+const amountInRupees=cartTotal();
+
+document.getElementById("payAmount").innerHTML="₹"+amountInRupees;
+
+document.getElementById("upiIdDisplay").innerHTML=UPI_ID;
+
+document.getElementById("payWrap").style.display="block";
+
+document.getElementById("proceedBtn").style.display="none";
+
+document.getElementById("payWrap").scrollIntoView({behavior:"smooth"});
+
+}
+
+function notifyPaymentViaEmail(){
+
+const amountInRupees=cartTotal();
+
+const customerEmail=auth.currentUser?auth.currentUser.email:"";
+
+const subject="New Cake Order - "+cart.length+" item(s)";
+
+let itemsList="";
+
+cart.forEach(function(item){
+
+itemsList+=
+
+"- "+item.title+" ("+item.weight+", x"+item.qty+") — ₹"+(itemUnitPrice(item)*item.qty)+"\n"+
+
+"  Message: "+(item.message||"None")+"\n"+
+
+"  Instructions: "+(item.instructions||"None")+"\n";
+
+});
+
+const body=
+
+"Order items:\n"+itemsList+"\n"+
+
+"Total Paid: ₹"+amountInRupees+"\n"+
+
+"Customer email: "+customerEmail+"\n\n"+
+
+"I have completed the UPI payment for this order. Please confirm and share delivery details.";
+
+const mailtoLink="mailto:"+ORDERS_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+
+/* Save the order to Firestore so it actually shows up in the admin
+
+   dashboard and (later) Order History — the mailto is just a nudge
+
+   to the business, this document is the real record */
+
+const orderItems=cart.map(function(item){
+
+return{
+
+title:item.title,
+
+weight:item.weight,
+
+qty:item.qty,
+
+unitPrice:itemUnitPrice(item),
+
+lineTotal:itemUnitPrice(item)*item.qty,
+
+message:item.message||"",
+
+instructions:item.instructions||""
+
+};
+
+});
+
+db.collection("orders").add({
+
+uid:auth.currentUser?auth.currentUser.uid:"",
+
+customerEmail:customerEmail,
+
+items:orderItems,
+
+total:amountInRupees,
+
+status:"pending_confirmation",
+
+createdAt:firebase.firestore.FieldValue.serverTimestamp()
+
+}).then(function(){
+
+window.location.href=mailtoLink;
+
+localStorage.removeItem("jiyasCakeCart");
+
+}).catch(function(err){
+
+/* Even if the database write fails for some reason, still let the
+
+   customer send the email so their order isn't lost entirely */
+
+alert("Note: couldn't save your order to our system, but sending the confirmation email anyway. Error: "+err.message);
+
+window.location.href=mailtoLink;
+
+localStorage.removeItem("jiyasCakeCart");
+
+});
+
+}
+
+/* ---------- Init ---------- */
+
+window.onload=function(){
+
+cart=JSON.parse(localStorage.getItem("jiyasCakeCart")||"[]");
+
+if(cart.length===0){
+
+document.getElementById("emptyState").style.display="block";
+
+return;
+
+}
+
+document.getElementById("orderWrap").style.display="grid";
+
+renderCart();
+
+};
+
+</script>
+
+</body>
+
+</html>

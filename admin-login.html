@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login | JIYA'S CAKE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#2A211B;
+
+overflow-x:hidden;
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background-image:
+
+radial-gradient(#3d3128 1px,transparent 1px);
+
+background-size:22px 22px;
+
+opacity:.5;
+
+z-index:-1;
+
+}
+
+.admin-card{
+
+width:440px;
+
+max-width:90%;
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(255,255,255,.1);
+
+backdrop-filter:blur(15px);
+
+border-radius:28px;
+
+padding:44px 40px;
+
+}
+
+.badge{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+.badge i{
+
+font-size:20px;
+
+color:#D9A86C;
+
+}
+
+.badge span{
+
+font-size:13px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+color:#D9A86C;
+
+font-weight:600;
+
+}
+
+.admin-card h1{
+
+font-family:"Playfair Display";
+
+font-size:34px;
+
+color:#fff;
+
+text-align:center;
+
+margin-bottom:8px;
+
+}
+
+.admin-card p.sub{
+
+text-align:center;
+
+color:#a89d90;
+
+font-size:14px;
+
+margin-bottom:30px;
+
+}
+
+.form-error{
+
+background:rgba(192,57,43,.15);
+
+border:1px solid rgba(192,57,43,.4);
+
+color:#ff9d90;
+
+font-size:14px;
+
+padding:12px 18px;
+
+border-radius:14px;
+
+margin-bottom:20px;
+
+text-align:center;
+
+display:none;
+
+}
+
+.form-error.show{
+
+display:block;
+
+}
+
+.input-group{
+
+margin-bottom:20px;
+
+}
+
+.input-group label{
+
+display:block;
+
+font-size:13px;
+
+font-weight:600;
+
+margin-bottom:8px;
+
+color:#c9bcac;
+
+}
+
+.input-box{
+
+display:flex;
+
+align-items:center;
+
+background:rgba(255,255,255,.06);
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:14px;
+
+padding:0 16px;
+
+transition:.3s;
+
+}
+
+.input-box:focus-within{
+
+border-color:#D9A86C;
+
+}
+
+.input-box input{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+outline:none;
+
+background:transparent;
+
+color:#fff;
+
+font-size:15px;
+
+}
+
+.input-box i{
+
+color:#D9A86C;
+
+font-size:16px;
+
+}
+
+.btn{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:30px;
+
+background:#D9A86C;
+
+color:#2A211B;
+
+font-size:16px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+margin-top:10px;
+
+}
+
+.btn:hover{
+
+background:#c99658;
+
+}
+
+.btn:disabled{
+
+opacity:.6;
+
+cursor:not-allowed;
+
+}
+
+.back-link{
+
+display:block;
+
+text-align:center;
+
+margin-top:24px;
+
+color:#a89d90;
+
+font-size:13px;
+
+text-decoration:none;
+
+}
+
+.back-link:hover{
+
+color:#D9A86C;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="admin-card">
+
+<div class="badge">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<span>Admin Access</span>
+
+</div>
+
+<h1>JIYA'S CAKE</h1>
+
+<p class="sub">Sign in with your admin account to manage orders.</p>
+
+<p class="form-error" id="formError"></p>
+
+<form id="adminLoginForm">
+
+<div class="input-group">
+
+<label>Admin Email</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input type="email" id="email" placeholder="admin@jiyascake.com">
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Password</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input type="password" id="password" placeholder="Enter Password">
+
+</div>
+
+</div>
+
+<button class="btn" type="submit" id="submitBtn">Sign In as Admin</button>
+
+</form>
+
+<a href="index.html" class="back-link">← Back to main site</a>
+
+</div>
+
+<!-- ============================================================
+     FIREBASE SETUP — same project as the rest of the site.
+
+     HOW ADMIN ACCESS WORKS:
+     Firebase Auth has no built-in idea of "admin" — anyone with an
+     account is just a regular user. So we keep a separate Firestore
+     collection called "admins", where the document ID is the admin's
+     UID. If a signed-in user's UID has a matching document there,
+     they're treated as an admin; otherwise they're signed back out.
+
+     TO MAKE YOURSELF AN ADMIN:
+     1. Register a normal account first via register.html (or sign in
+        with Google once) using the email you want to use as admin.
+     2. Firebase Console → Authentication → Users tab → copy that
+        account's User UID (long string like "aB3xY...").
+     3. Firebase Console → Firestore Database → Data tab → Start
+        collection → collection ID: admins
+     4. Document ID: paste the UID you copied. Add one field:
+        field name: email, type: string, value: (the admin's email)
+     5. Save. That account can now log in here.
+
+     FIRESTORE RULES — paste this under Firestore → Rules, replacing
+     what's there (this also covers the "users" and "orders"
+     collections used elsewhere on the site):
+
+     rules_version = '2';
+     service cloud.firestore {
+       match /databases/{database}/documents {
+
+         function isAdmin() {
+           return request.auth != null &&
+             exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+         }
+
+         match /users/{userId} {
+           allow read, write: if request.auth != null && request.auth.uid == userId;
+         }
+
+         match /admins/{adminId} {
+           allow read: if request.auth != null && request.auth.uid == adminId;
+           allow write: if false;
+         }
+
+         match /orders/{orderId} {
+           allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+           allow read: if request.auth != null &&
+             (resource.data.uid == request.auth.uid || isAdmin());
+           allow update: if isAdmin();
+           allow delete: if false;
+         }
+       }
+     }
+     ============================================================ -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+
+const firebaseConfig={
+
+apiKey:"AIzaSyBLkIEo6Cdnh-9-CanKo5EhqgdRyghmPEw",
+
+authDomain:"jiya-s-cake.firebaseapp.com",
+
+projectId:"jiya-s-cake",
+
+storageBucket:"jiya-s-cake.firebasestorage.app",
+
+messagingSenderId:"319442668206",
+
+appId:"1:319442668206:web:2f3cf2bdce218c2816bb3f"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth=firebase.auth();
+
+const db=firebase.firestore();
+
+</script>
+
+<script>
+
+function showFormError(msg){
+
+const el=document.getElementById("formError");
+
+el.innerHTML=msg;
+
+el.classList.add("show");
+
+}
+
+function hideFormError(){
+
+document.getElementById("formError").classList.remove("show");
+
+}
+
+document.getElementById("adminLoginForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+hideFormError();
+
+const email=document.getElementById("email").value.trim();
+
+const pass=document.getElementById("password").value;
+
+if(email===""||pass===""){
+
+showFormError("Please enter both email and password.");
+
+return;
+
+}
+
+const submitBtn=document.getElementById("submitBtn");
+
+submitBtn.disabled=true;
+
+submitBtn.innerHTML="Checking...";
+
+auth.signInWithEmailAndPassword(email,pass).then(function(cred){
+
+/* Logged in as a regular Firebase user — now check the admins
+
+   collection before letting them anywhere near the dashboard */
+
+return db.collection("admins").doc(cred.user.uid).get();
+
+}).then(function(doc){
+
+if(doc.exists){
+
+window.location.href="admin.html";
+
+}else{
+
+auth.signOut();
+
+submitBtn.disabled=false;
+
+submitBtn.innerHTML="Sign In as Admin";
+
+showFormError("This account doesn't have admin access.");
+
+}
+
+}).catch(function(err){
+
+submitBtn.disabled=false;
+
+submitBtn.innerHTML="Sign In as Admin";
+
+showFormError(err.message);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Create Account | JIYA'S CAKE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#F8F4EC;
+overflow-x:hidden;
+
+}
+
+/* Background */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(#dac7b0 1px,transparent 1px);
+
+background-size:22px 22px;
+
+opacity:.35;
+
+z-index:-1;
+
+}
+
+/* Navbar */
+
+nav{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+
+height:65px;
+
+background:rgba(255,255,255,.75);
+
+backdrop-filter:blur(15px);
+
+display:flex;
+
+justify-content:space-between;
+align-items:center;
+
+padding:0 60px;
+
+box-shadow:0 2px 12px rgba(0,0,0,.05);
+
+z-index:100;
+
+}
+
+.logo{
+
+font-size:38px;
+
+font-family:"Playfair Display";
+
+font-weight:900;
+
+letter-spacing:2px;
+
+color:#9A6845;
+
+}
+
+nav ul{
+
+display:flex;
+
+gap:35px;
+
+list-style:none;
+
+}
+
+nav ul li{
+
+cursor:pointer;
+
+font-size:17px;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+nav ul li:hover{
+
+color:#B5855A;
+
+}
+
+/* Main */
+
+.container{
+
+padding-top:90px;
+
+padding-bottom:40px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:70px;
+
+}
+
+/* Left */
+
+.left{
+
+width:48%;
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.register-card{
+
+width:520px;
+
+background:rgba(255,255,255,.82);
+
+backdrop-filter:blur(15px);
+
+padding:40px;
+
+border-radius:35px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+animation:slideLeft 1s;
+
+}
+
+.register-card h1{
+
+font-size:48px;
+
+font-family:"Playfair Display";
+
+color:#9A6845;
+
+text-align:center;
+
+}
+
+.register-card p{
+
+text-align:center;
+
+margin-top:10px;
+
+margin-bottom:30px;
+
+color:#777;
+
+line-height:28px;
+
+}
+
+/* Two Inputs */
+
+.row{
+
+display:flex;
+
+gap:15px;
+
+}
+
+.row .input-group{
+
+flex:1;
+
+}
+
+/* Inputs */
+
+.input-group{
+
+margin-bottom:18px;
+
+}
+
+.input-group label{
+
+display:block;
+
+font-weight:600;
+
+margin-bottom:8px;
+
+color:#7A5236;
+
+}
+
+.input-box{
+
+display:flex;
+
+align-items:center;
+
+background:#fff;
+
+border:2px solid #eadcc8;
+
+border-radius:35px;
+
+padding:0 18px;
+
+transition:.3s;
+
+}
+
+.input-box:focus-within{
+
+border-color:#B5855A;
+
+box-shadow:0 0 15px rgba(181,133,90,.18);
+
+}
+
+.input-box input{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+outline:none;
+
+background:transparent;
+
+font-size:15px;
+
+}
+
+.input-box textarea{
+
+width:100%;
+
+height:90px;
+
+resize:none;
+
+border:none;
+
+outline:none;
+
+padding:15px;
+
+background:transparent;
+
+font-size:15px;
+
+}
+
+.input-box i{
+
+color:#9A6845;
+
+font-size:18px;
+
+}
+
+.eye{
+
+cursor:pointer;
+
+}
+
+/* Terms */
+
+.terms{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin-top:5px;
+
+margin-bottom:25px;
+
+font-size:15px;
+
+color:#555;
+
+}
+
+.terms a{
+
+text-decoration:none;
+
+font-weight:600;
+
+color:#9A6845;
+
+}
+
+.terms a:hover{
+
+text-decoration:underline;
+
+}
+
+/* Inline form error, matches the pattern used on Order_details.html */
+
+.form-error{
+
+background:#FDECEC;
+
+border:1px solid #f3c6c6;
+
+color:#c0392b;
+
+border-radius:14px;
+
+padding:12px 16px;
+
+font-size:14px;
+
+margin-bottom:18px;
+
+display:none;
+
+}
+
+.form-error.show{
+
+display:block;
+
+}
+
+/* Buttons */
+
+.btn{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:40px;
+
+background:#B5855A;
+
+color:white;
+
+font-size:18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+margin-bottom:20px;
+
+}
+
+.btn:hover{
+
+background:#9A6845;
+
+transform:translateY(-3px);
+
+}
+
+.btn:disabled{
+
+background:#ddd;
+
+cursor:not-allowed;
+
+transform:none;
+
+}
+
+.login-link{
+
+display:block;
+
+text-align:center;
+
+padding:15px;
+
+border:2px solid #B5855A;
+
+border-radius:40px;
+
+text-decoration:none;
+
+font-weight:600;
+
+color:#9A6845;
+
+transition:.35s;
+
+}
+
+.login-link:hover{
+
+background:#B5855A;
+
+color:white;
+
+}
+
+/* Right */
+
+.right{
+
+width:45%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+animation:slideRight 1s;
+
+}
+
+.video-box{
+
+width:430px;
+
+height:650px;
+
+border-radius:35px;
+
+overflow:hidden;
+
+background:white;
+
+position:relative;
+
+box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+.video-box video{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transition:.5s;
+
+}
+
+.video-box:hover video{
+
+transform:scale(1.05);
+
+}
+
+.video-box::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+top:0;
+
+width:100%;
+height:100%;
+
+background:linear-gradient(
+to top,
+rgba(0,0,0,.30),
+transparent 45%
+);
+
+}
+
+.tag{
+
+position:absolute;
+
+bottom:25px;
+
+left:25px;
+
+background:rgba(255,255,255,.80);
+
+backdrop-filter:blur(8px);
+
+padding:12px 22px;
+
+border-radius:30px;
+
+font-weight:600;
+
+color:#8D5D3B;
+
+z-index:2;
+
+}
+
+/* Divider */
+
+.divider{
+
+display:flex;
+
+align-items:center;
+
+margin:30px 0;
+
+}
+
+.divider::before,
+.divider::after{
+
+content:"";
+
+flex:1;
+
+height:1px;
+
+background:#ddd;
+
+}
+
+.divider span{
+
+padding:0 15px;
+
+font-size:14px;
+
+color:#999;
+
+}
+
+/* Social */
+
+.social{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+}
+
+.social a{
+
+width:48px;
+
+height:48px;
+
+border-radius:50%;
+
+background:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-decoration:none;
+
+font-size:20px;
+
+color:#9A6845;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.social a:hover{
+
+background:#B5855A;
+
+color:white;
+
+transform:translateY(-5px);
+
+}
+
+/* Animations */
+
+@keyframes slideLeft{
+
+from{
+
+opacity:0;
+
+transform:translateX(-60px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+@keyframes slideRight{
+
+from{
+
+opacity:0;
+
+transform:translateX(60px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+/* Responsive */
+
+@media(max-width:1150px){
+
+.container{
+
+flex-direction:column-reverse;
+
+gap:40px;
+
+padding:100px 20px 40px;
+
+}
+
+.left,
+.right{
+
+width:100%;
+
+}
+
+.register-card{
+
+width:100%;
+
+max-width:550px;
+
+}
+
+.video-box{
+
+width:100%;
+max-width:420px;
+height:500px;
+
+}
+
+nav{
+
+padding:0 25px;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+<div class="logo">
+
+JIYA'S CAKE
+
+</div>
+
+<ul>
+
+<li onclick="location.href='index.html'">Home</li>
+
+<li onclick="location.href='gallery.html'">Cake Gallery</li>
+
+<li onclick="location.href='gallery.html'">Order Cake</li>
+
+<li>Contact</li>
+
+</ul>
+
+</nav>
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+<!-- Left -->
+
+<div class="left">
+
+<div class="register-card">
+
+<h1>Create Account</h1>
+
+<p>
+
+Create your bakery account and start ordering your favourite cakes.
+
+</p>
+
+<p class="form-error" id="formError"></p>
+
+<form id="registerForm">
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Full Name</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-user"></i>
+
+<input
+type="text"
+id="fullname"
+placeholder="Full Name">
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Username</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-user-tag"></i>
+
+<input
+type="text"
+id="username"
+placeholder="Username">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Email Address</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address">
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Mobile Number</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-phone"></i>
+
+<input
+type="tel"
+id="mobile"
+placeholder="Mobile Number">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Password</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="password"
+placeholder="Password">
+
+<i
+class="fa-solid fa-eye eye"
+id="togglePassword">
+
+</i>
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Confirm Password</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="confirmPassword"
+placeholder="Confirm Password">
+
+<i
+class="fa-solid fa-eye eye"
+id="toggleConfirm">
+
+</i>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Delivery Address</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<textarea
+id="address"
+placeholder="Enter Complete Address"></textarea>
+
+</div>
+
+</div>
+
+<div class="terms">
+
+<input
+type="checkbox"
+id="terms">
+
+<label for="terms">
+
+I agree to the
+
+<a href="#">
+
+Terms & Conditions
+
+</a>
+
+</label>
+
+</div>
+
+<button
+type="submit"
+class="btn"
+id="submitBtn">
+
+Create Account
+
+</button>
+
+<a
+href="login.html"
+class="login-link">
+
+Already have an account? Login
+
+</a>
+
+<div class="divider">
+
+<span>
+
+or continue with
+
+</span>
+
+</div>
+
+<div class="social">
+
+<a onclick="signUpWithGoogle()"><i class="fab fa-google"></i></a>
+
+<a onclick="comingSoon('Facebook')"><i class="fab fa-facebook-f"></i></a>
+
+<a onclick="comingSoon('Instagram')"><i class="fab fa-instagram"></i></a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- Right -->
+
+<div class="right">
+
+<div class="video-box">
+
+<video autoplay muted loop playsinline>
+
+<source
+src="assets/videos/login_cake.mp4"
+type="video/mp4">
+
+</video>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ============================================================
+     FIREBASE SETUP — same project as Order_details.html
+     This page ALSO needs Firestore turned on (Order_details.html
+     only used Auth, not the database):
+     1. console.firebase.google.com → your project → Build → Firestore
+        Database → Create database → start in test mode (fine for now,
+        tighten the rules below before going live).
+     2. Under Firestore → Rules, use:
+        rules_version = '2';
+        service cloud.firestore {
+          match /databases/{database}/documents {
+            match /users/{userId} {
+              allow read, write: if request.auth != null && request.auth.uid == userId;
+            }
+          }
+        }
+        This means: a signed-in person can only read/write their OWN
+        profile document, never anyone else's.
+     ============================================================ -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+
+const firebaseConfig={
+
+apiKey:"AIzaSyBLkIEo6Cdnh-9-CanKo5EhqgdRyghmPEw",
+
+authDomain:"jiya-s-cake.firebaseapp.com",
+
+projectId:"jiya-s-cake",
+
+storageBucket:"jiya-s-cake.firebasestorage.app",
+
+messagingSenderId:"319442668206",
+
+appId:"1:319442668206:web:2f3cf2bdce218c2816bb3f"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth=firebase.auth();
+
+const db=firebase.firestore();
+
+</script>
+
+<script>
+
+/* ==========================================
+   SHOW / HIDE PASSWORD
+========================================== */
+
+const togglePassword = document.getElementById("togglePassword");
+const toggleConfirm = document.getElementById("toggleConfirm");
+
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmPassword");
+
+togglePassword.addEventListener("click",function(){
+
+const type=password.getAttribute("type")==="password"
+?
+"text"
+:
+"password";
+
+password.setAttribute("type",type);
+
+this.classList.toggle("fa-eye");
+this.classList.toggle("fa-eye-slash");
+
+});
+
+toggleConfirm.addEventListener("click",function(){
+
+const type=confirmPassword.getAttribute("type")==="password"
+?
+"text"
+:
+"password";
+
+confirmPassword.setAttribute("type",type);
+
+this.classList.toggle("fa-eye");
+this.classList.toggle("fa-eye-slash");
+
+});
+
+function showFormError(msg){
+
+const el=document.getElementById("formError");
+
+el.innerHTML=msg;
+
+el.classList.add("show");
+
+}
+
+function hideFormError(){
+
+document.getElementById("formError").classList.remove("show");
+
+}
+
+function comingSoon(name){
+
+alert(name+" sign-up isn't set up yet — use email or Google for now.");
+
+}
+
+/* Saves the extra profile fields (name, mobile, address) that Firebase
+
+   Auth itself has no concept of, keyed by the user's UID */
+
+function saveProfile(uid,data){
+
+return db.collection("users").doc(uid).set(Object.assign({
+
+createdAt:firebase.firestore.FieldValue.serverTimestamp()
+
+},data));
+
+}
+
+function signUpWithGoogle(){
+
+hideFormError();
+
+const provider=new firebase.auth.GoogleAuthProvider();
+
+auth.signInWithPopup(provider).then(function(result){
+
+const user=result.user;
+
+/* Only write a fresh profile doc if one doesn't already exist,
+
+   so signing in again later doesn't wipe previously saved details */
+
+return db.collection("users").doc(user.uid).get().then(function(doc){
+
+if(!doc.exists){
+
+return saveProfile(user.uid,{
+
+fullname:user.displayName||"",
+
+username:"",
+
+email:user.email||"",
+
+mobile:"",
+
+address:""
+
+});
+
+}
+
+});
+
+}).then(function(){
+
+window.location.href="index.html";
+
+}).catch(function(err){
+
+showFormError(err.message);
+
+});
+
+}
+
+/* ==========================================
+   FORM VALIDATION + REAL ACCOUNT CREATION
+========================================== */
+
+document
+.getElementById("registerForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+hideFormError();
+
+let fullname=document.getElementById("fullname").value.trim();
+
+let username=document.getElementById("username").value.trim();
+
+let email=document.getElementById("email").value.trim();
+
+let mobile=document.getElementById("mobile").value.trim();
+
+let address=document.getElementById("address").value.trim();
+
+let pass=password.value.trim();
+
+let confirm=confirmPassword.value.trim();
+
+let terms=document.getElementById("terms").checked;
+
+/* Name */
+
+if(fullname===""){
+
+showFormError("Please enter your Full Name.");
+
+return;
+
+}
+
+/* Username */
+
+if(username===""){
+
+showFormError("Please enter Username.");
+
+return;
+
+}
+
+/* Email */
+
+const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(!emailPattern.test(email)){
+
+showFormError("Please enter a valid Email Address.");
+
+return;
+
+}
+
+/* Mobile */
+
+const mobilePattern=/^[6-9][0-9]{9}$/;
+
+if(!mobilePattern.test(mobile)){
+
+showFormError("Please enter a valid 10-digit Mobile Number.");
+
+return;
+
+}
+
+/* Address */
+
+if(address===""){
+
+showFormError("Please enter Delivery Address.");
+
+return;
+
+}
+
+/* Password Length */
+
+if(pass.length<8){
+
+showFormError("Password must contain at least 8 characters.");
+
+return;
+
+}
+
+/* Uppercase */
+
+if(!/[A-Z]/.test(pass)){
+
+showFormError("Password should contain at least one Capital Letter.");
+
+return;
+
+}
+
+/* Lowercase */
+
+if(!/[a-z]/.test(pass)){
+
+showFormError("Password should contain at least one Small Letter.");
+
+return;
+
+}
+
+/* Number */
+
+if(!/[0-9]/.test(pass)){
+
+showFormError("Password should contain at least one Number.");
+
+return;
+
+}
+
+/* Special Character */
+
+if(!/[!@#$%^&*(),.?":{}|<>]/.test(pass)){
+
+showFormError("Password should contain at least one Special Character.");
+
+return;
+
+}
+
+/* Match */
+
+if(pass!==confirm){
+
+showFormError("Passwords do not match.");
+
+return;
+
+}
+
+/* Terms */
+
+if(!terms){
+
+showFormError("Please accept the Terms & Conditions.");
+
+return;
+
+}
+
+/* All client-side checks passed — create the real Firebase account */
+
+const submitBtn=document.getElementById("submitBtn");
+
+submitBtn.disabled=true;
+
+submitBtn.innerHTML="Creating Account...";
+
+auth.createUserWithEmailAndPassword(email,pass).then(function(cred){
+
+return cred.user.updateProfile({displayName:fullname}).then(function(){
+
+return saveProfile(cred.user.uid,{
+
+fullname:fullname,
+
+username:username,
+
+email:email,
+
+mobile:mobile,
+
+address:address
+
+});
+
+});
+
+}).then(function(){
+
+alert("🎉 Account Created Successfully!");
+
+window.location.href="index.html";
+
+}).catch(function(err){
+
+submitBtn.disabled=false;
+
+submitBtn.innerHTML="Create Account";
+
+if(err.code==="auth/email-already-in-use"){
+
+showFormError("That email is already registered — try signing in instead.");
+
+}else{
+
+showFormError(err.message);
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>

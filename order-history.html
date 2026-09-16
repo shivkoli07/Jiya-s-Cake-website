@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order History | JIYA'S CAKE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#F8F4EC;
+overflow-x:hidden;
+color:#5D4632;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(#d7c4ae 1px,transparent 1px);
+
+background-size:22px 22px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+/* Navbar (matches gallery.html / Cart.html / Order_details.html) */
+
+nav{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:70px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 70px;
+
+background:rgba(255,255,255,.72);
+
+backdrop-filter:blur(18px);
+
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-family:"Playfair Display";
+
+font-size:38px;
+
+font-weight:900;
+
+color:#9A6845;
+
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:35px;
+
+}
+
+nav ul li{
+
+cursor:pointer;
+
+font-weight:500;
+
+transition:.35s;
+
+}
+
+nav ul li:hover{
+
+color:#B5855A;
+
+}
+
+.icons{
+
+display:flex;
+
+gap:20px;
+
+font-size:20px;
+
+color:#9A6845;
+
+}
+
+.icons i{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.icons i:hover{
+
+transform:scale(1.15);
+
+}
+
+/* Hero */
+
+.hero{
+
+padding-top:140px;
+
+padding-bottom:40px;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-family:"Playfair Display";
+
+font-size:52px;
+
+color:#8D5D3B;
+
+margin-bottom:12px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+color:#777;
+
+}
+
+/* Layout */
+
+.wrap{
+
+width:92%;
+
+max-width:800px;
+
+margin:auto;
+
+padding-bottom:100px;
+
+}
+
+.order-card{
+
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(15px);
+
+border-radius:26px;
+
+box-shadow:0 20px 35px rgba(0,0,0,.08);
+
+padding:26px 30px;
+
+margin-bottom:26px;
+
+}
+
+.order-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-start;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-bottom:20px;
+
+}
+
+.order-date{
+
+font-size:13px;
+
+color:#999;
+
+}
+
+.order-total{
+
+font-family:"Playfair Display";
+
+font-size:24px;
+
+color:#8D5D3B;
+
+font-weight:700;
+
+}
+
+/* Stepper */
+
+.stepper{
+
+display:flex;
+
+align-items:center;
+
+margin-bottom:26px;
+
+padding:10px 4px;
+
+}
+
+.step{
+
+flex:1;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+position:relative;
+
+}
+
+.step .dot{
+
+width:26px;
+
+height:26px;
+
+border-radius:50%;
+
+background:#eee0cd;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:#fff;
+
+font-size:12px;
+
+z-index:2;
+
+}
+
+.step.done .dot{
+
+background:#B5855A;
+
+}
+
+.step.current .dot{
+
+background:#8D5D3B;
+
+box-shadow:0 0 0 5px rgba(141,93,59,.15);
+
+}
+
+.step .line{
+
+position:absolute;
+
+top:13px;
+
+left:50%;
+
+width:100%;
+
+height:3px;
+
+background:#eee0cd;
+
+z-index:1;
+
+}
+
+.step.done .line,
+.step.current .line{
+
+background:#B5855A;
+
+}
+
+.step:first-child .line{
+
+display:none;
+
+}
+
+.step .label{
+
+font-size:10px;
+
+color:#8a7c6c;
+
+margin-top:8px;
+
+text-align:center;
+
+max-width:80px;
+
+text-transform:capitalize;
+
+}
+
+.step.current .label{
+
+color:#8D5D3B;
+
+font-weight:700;
+
+}
+
+.cancelled-banner{
+
+background:#fdecea;
+
+border:1px solid #f3c1bb;
+
+color:#c0392b;
+
+padding:12px 18px;
+
+border-radius:16px;
+
+font-size:14px;
+
+font-weight:600;
+
+text-align:center;
+
+margin-bottom:26px;
+
+}
+
+/* Items */
+
+.order-items{
+
+background:#FBF6EF;
+
+border-radius:16px;
+
+padding:16px 20px;
+
+}
+
+.order-item-line{
+
+display:flex;
+
+justify-content:space-between;
+
+font-size:14px;
+
+padding:8px 0;
+
+border-bottom:1px dashed #eadfcf;
+
+}
+
+.order-item-line:last-child{
+
+border-bottom:none;
+
+}
+
+.order-item-line .name{
+
+color:#5D4632;
+
+}
+
+.order-item-line .note{
+
+color:#999;
+
+font-size:12px;
+
+display:block;
+
+margin-top:2px;
+
+}
+
+/* Empty / gate states */
+
+.empty-state{
+
+width:90%;
+
+max-width:600px;
+
+margin:160px auto;
+
+text-align:center;
+
+}
+
+.empty-state i{
+
+font-size:56px;
+
+color:#e2d6c8;
+
+margin-bottom:20px;
+
+}
+
+.empty-state h2{
+
+font-family:"Playfair Display";
+
+font-size:32px;
+
+color:#8D5D3B;
+
+margin-bottom:14px;
+
+}
+
+.empty-state p{
+
+color:#777;
+
+margin-bottom:24px;
+
+}
+
+.empty-state a{
+
+display:inline-block;
+
+padding:14px 30px;
+
+border-radius:40px;
+
+background:#B5855A;
+
+color:#fff;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">JIYA'S CAKE</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">Home</li>
+<li onclick="window.location.href='gallery.html'">Gallery</li>
+<li onclick="window.location.href='About.html'">About</li>
+<li onclick="window.location.href='Contact.html'">Contact</li>
+
+</ul>
+
+<div class="icons">
+
+<i class="fa-solid fa-cart-shopping" onclick="window.location.href='Cart.html'" style="cursor:pointer;"></i>
+
+<i class="fa-solid fa-user"></i>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>Your Orders</h1>
+
+<p>Track every order you've placed, all the way to delivery.</p>
+
+</section>
+
+<div class="wrap" id="ordersWrap"></div>
+
+<!-- Shown if the person isn't logged in -->
+
+<div class="empty-state" id="loginGate" style="display:none;">
+
+<i class="fa-solid fa-lock"></i>
+
+<h2>Sign in to see your orders</h2>
+
+<p>Your order history is tied to your account, so log in first.</p>
+
+<a href="login.html">Sign In</a>
+
+</div>
+
+<!-- Shown if logged in but no orders yet -->
+
+<div class="empty-state" id="emptyState" style="display:none;">
+
+<i class="fa-solid fa-receipt"></i>
+
+<h2>No orders yet</h2>
+
+<p>Once you place an order, you'll be able to track its status right here.</p>
+
+<a href="gallery.html">Browse Gallery</a>
+
+</div>
+
+<!-- ============================================================
+     FIREBASE — same project as the rest of the site. Reads only the
+     signed-in customer's own orders (enforced by the Firestore rules
+     set up for admin.html: uid must match request.auth.uid).
+     ============================================================ -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+
+const firebaseConfig={
+
+apiKey:"AIzaSyBLkIEo6Cdnh-9-CanKo5EhqgdRyghmPEw",
+
+authDomain:"jiya-s-cake.firebaseapp.com",
+
+projectId:"jiya-s-cake",
+
+storageBucket:"jiya-s-cake.firebasestorage.app",
+
+messagingSenderId:"319442668206",
+
+appId:"1:319442668206:web:2f3cf2bdce218c2816bb3f"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth=firebase.auth();
+
+const db=firebase.firestore();
+
+</script>
+
+<script>
+
+/* The linear path an order normally takes. Cancelled is handled
+
+   separately since it isn't a "stage" in this sequence. */
+
+const STAGES=["pending_confirmation","confirmed","preparing","out_for_delivery","delivered"];
+
+const STAGE_LABELS={
+
+pending_confirmation:"Pending",
+
+confirmed:"Confirmed",
+
+preparing:"Preparing",
+
+out_for_delivery:"Out for Delivery",
+
+delivered:"Delivered"
+
+};
+
+function formatDate(ts){
+
+if(!ts||!ts.toDate)return"";
+
+return ts.toDate().toLocaleString("en-IN",{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
+
+}
+
+function buildStepper(status){
+
+if(status==="cancelled"){
+
+return"<div class=\"cancelled-banner\"><i class=\"fa-solid fa-circle-xmark\"></i> This order was cancelled</div>";
+
+}
+
+const currentIndex=STAGES.indexOf(status);
+
+let html="<div class=\"stepper\">";
+
+STAGES.forEach(function(stage,i){
+
+let cls="step";
+
+if(i<currentIndex)cls+=" done";
+
+if(i===currentIndex)cls+=" current";
+
+html+=
+
+"<div class=\""+cls+"\">"+
+
+"<div class=\"line\"></div>"+
+
+"<div class=\"dot\">"+(i<currentIndex?"<i class=\"fa-solid fa-check\" style=\"font-size:10px;\"></i>":"")+"</div>"+
+
+"<div class=\"label\">"+STAGE_LABELS[stage]+"</div>"+
+
+"</div>";
+
+});
+
+html+="</div>";
+
+return html;
+
+}
+
+function renderOrders(orders){
+
+const wrap=document.getElementById("ordersWrap");
+
+if(orders.length===0){
+
+document.getElementById("emptyState").style.display="block";
+
+return;
+
+}
+
+document.getElementById("emptyState").style.display="none";
+
+wrap.innerHTML="";
+
+orders.forEach(function(order){
+
+let itemsHtml="";
+
+(order.items||[]).forEach(function(item){
+
+itemsHtml+=
+
+"<div class=\"order-item-line\">"+
+
+"<div class=\"name\">"+item.title+" — "+item.weight+" × "+item.qty+
+
+(item.message?"<span class=\"note\">Message: "+item.message+"</span>":"")+
+
+(item.instructions?"<span class=\"note\">Note: "+item.instructions+"</span>":"")+
+
+"</div>"+
+
+"<div>₹"+item.lineTotal+"</div>"+
+
+"</div>";
+
+});
+
+const card=document.createElement("div");
+
+card.className="order-card";
+
+card.innerHTML=
+
+"<div class=\"order-top\">"+
+
+"<div class=\"order-date\">Placed "+formatDate(order.createdAt)+"</div>"+
+
+"<div class=\"order-total\">₹"+order.total+"</div>"+
+
+"</div>"+
+
+buildStepper(order.status)+
+
+"<div class=\"order-items\">"+itemsHtml+"</div>";
+
+wrap.appendChild(card);
+
+});
+
+}
+
+auth.onAuthStateChanged(function(user){
+
+if(!user){
+
+document.getElementById("loginGate").style.display="block";
+
+return;
+
+}
+
+db.collection("orders").where("uid","==",user.uid).orderBy("createdAt","desc")
+
+.onSnapshot(function(snapshot){
+
+const orders=snapshot.docs.map(function(doc){
+
+return Object.assign({id:doc.id},doc.data());
+
+});
+
+renderOrders(orders);
+
+},function(err){
+
+/* Firestore often needs a composite index the first time a
+
+   where()+orderBy() query like this runs — if so, the error
+
+   here includes a direct link to create it in one click */
+
+document.getElementById("ordersWrap").innerHTML=
+
+"<div class=\"empty-state\"><p>Couldn't load your orders: "+err.message+"</p></div>";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

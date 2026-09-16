@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Your Cart | JIYA'S CAKE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#F8F4EC;
+overflow-x:hidden;
+color:#5D4632;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(#d7c4ae 1px,transparent 1px);
+
+background-size:22px 22px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+/* Navbar (matches gallery.html / Order_details.html) */
+
+nav{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:70px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 70px;
+
+background:rgba(255,255,255,.72);
+
+backdrop-filter:blur(18px);
+
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-family:"Playfair Display";
+
+font-size:38px;
+
+font-weight:900;
+
+color:#9A6845;
+
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:35px;
+
+}
+
+nav ul li{
+
+cursor:pointer;
+
+font-weight:500;
+
+transition:.35s;
+
+}
+
+nav ul li:hover{
+
+color:#B5855A;
+
+}
+
+.icons{
+
+display:flex;
+
+gap:20px;
+
+font-size:20px;
+
+color:#9A6845;
+
+}
+
+.icons i{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.icons i:hover{
+
+transform:scale(1.15);
+
+}
+
+/* Hero */
+
+.hero{
+
+padding-top:140px;
+
+padding-bottom:40px;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-family:"Playfair Display";
+
+font-size:52px;
+
+color:#8D5D3B;
+
+margin-bottom:12px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+color:#777;
+
+}
+
+/* Layout */
+
+.cart-wrap{
+
+width:92%;
+
+max-width:1100px;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:1.6fr 1fr;
+
+gap:40px;
+
+padding-bottom:100px;
+
+align-items:start;
+
+}
+
+@media(max-width:900px){
+
+.cart-wrap{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+.panel{
+
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(15px);
+
+border-radius:26px;
+
+box-shadow:0 20px 35px rgba(0,0,0,.08);
+
+overflow:hidden;
+
+}
+
+/* Cart items list */
+
+.items-panel{
+
+padding:24px;
+
+}
+
+.items-panel h3{
+
+font-family:"Playfair Display";
+
+font-size:22px;
+
+color:#8D5D3B;
+
+margin-bottom:16px;
+
+padding:0 4px;
+
+}
+
+.item-row{
+
+display:flex;
+
+gap:16px;
+
+background:#FBF6EF;
+
+border:1px solid #eee0cd;
+
+border-radius:18px;
+
+padding:14px;
+
+margin-bottom:14px;
+
+}
+
+.item-row:last-child{
+
+margin-bottom:0;
+
+}
+
+.item-video{
+
+width:100px;
+
+height:100px;
+
+border-radius:14px;
+
+overflow:hidden;
+
+flex-shrink:0;
+
+position:relative;
+
+}
+
+.item-video video{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transform:scale(1.22);
+
+transform-origin:center center;
+
+display:block;
+
+}
+
+.item-info{
+
+flex:1;
+
+min-width:0;
+
+}
+
+.item-info h4{
+
+font-family:"Playfair Display";
+
+font-size:19px;
+
+color:#8D5D3B;
+
+margin-bottom:4px;
+
+}
+
+.item-meta{
+
+font-size:13px;
+
+color:#888;
+
+margin-bottom:10px;
+
+line-height:19px;
+
+}
+
+.item-meta b{
+
+color:#7a5f45;
+
+}
+
+.item-bottom{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+}
+
+.item-qty{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.item-qty button{
+
+width:28px;
+
+height:28px;
+
+border:none;
+
+border-radius:50%;
+
+background:#F1E6D8;
+
+color:#8D5D3B;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+.item-qty button:hover{
+
+background:#B5855A;
+
+color:#fff;
+
+}
+
+.item-price{
+
+font-weight:700;
+
+color:#8D5D3B;
+
+font-size:16px;
+
+}
+
+.item-remove{
+
+background:none;
+
+border:none;
+
+color:#c0392b;
+
+font-size:14px;
+
+cursor:pointer;
+
+padding:4px;
+
+}
+
+.item-remove:hover{
+
+text-decoration:underline;
+
+}
+
+/* Summary panel */
+
+.summary-body{
+
+padding:26px 30px;
+
+}
+
+.summary-body h3{
+
+font-family:"Playfair Display";
+
+font-size:24px;
+
+color:#8D5D3B;
+
+margin-bottom:18px;
+
+}
+
+.row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:16px;
+
+font-size:15px;
+
+}
+
+.row span:first-child{
+
+color:#777;
+
+}
+
+.row span:last-child{
+
+font-weight:600;
+
+color:#5D4632;
+
+}
+
+hr{
+
+border:none;
+
+border-top:1px dashed #e2d6c8;
+
+margin:18px 0;
+
+}
+
+.total-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+font-size:20px;
+
+font-weight:700;
+
+color:#8D5D3B;
+
+margin-bottom:22px;
+
+}
+
+.checkout-btn{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:40px;
+
+background:#B5855A;
+
+color:white;
+
+font-size:17px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+text-align:center;
+
+display:block;
+
+text-decoration:none;
+
+}
+
+.checkout-btn:hover{
+
+background:#8D5D3B;
+
+}
+
+.continue-link{
+
+display:block;
+
+text-align:center;
+
+margin-top:14px;
+
+color:#9A6845;
+
+font-size:14px;
+
+font-weight:500;
+
+text-decoration:none;
+
+}
+
+.continue-link:hover{
+
+text-decoration:underline;
+
+}
+
+/* Empty state */
+
+.empty-state{
+
+width:90%;
+
+max-width:600px;
+
+margin:160px auto;
+
+text-align:center;
+
+}
+
+.empty-state i{
+
+font-size:60px;
+
+color:#e2d6c8;
+
+margin-bottom:20px;
+
+}
+
+.empty-state h2{
+
+font-family:"Playfair Display";
+
+font-size:32px;
+
+color:#8D5D3B;
+
+margin-bottom:14px;
+
+}
+
+.empty-state p{
+
+color:#777;
+
+margin-bottom:24px;
+
+}
+
+.empty-state a{
+
+display:inline-block;
+
+padding:14px 30px;
+
+border-radius:40px;
+
+background:#B5855A;
+
+color:#fff;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">JIYA'S CAKE</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">Home</li>
+<li onclick="window.location.href='gallery.html'">Gallery</li>
+<li onclick="window.location.href='About.html'">About</li>
+<li onclick="window.location.href='Contact.html'">Contact</li>
+
+</ul>
+
+<div class="icons">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<i class="fa-solid fa-receipt" onclick="window.location.href='order-history.html'" style="cursor:pointer;" title="My Orders"></i>
+
+<i class="fa-solid fa-user"></i>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>Your Cart</h1>
+
+<p>Review your cakes, adjust quantities, then head to checkout.</p>
+
+</section>
+
+<!-- Shown only if there are items in the cart -->
+
+<div class="cart-wrap" id="cartWrap" style="display:none;">
+
+<div class="panel items-panel" id="itemsPanel">
+
+</div>
+
+<div class="panel">
+
+<div class="summary-body">
+
+<h3>Cart Summary</h3>
+
+<div class="row">
+
+<span>Items</span>
+
+<span id="itemCountRow">0</span>
+
+</div>
+
+<div class="row">
+
+<span>Subtotal</span>
+
+<span id="subtotalRow">₹0</span>
+
+</div>
+
+<hr>
+
+<div class="total-row">
+
+<span>Total</span>
+
+<span id="totalPrice">₹0</span>
+
+</div>
+
+<a href="Order_details.html" class="checkout-btn">Proceed to Checkout</a>
+
+<a href="gallery.html" class="continue-link">← Continue browsing the gallery</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Shown only if the cart is empty -->
+
+<div class="empty-state" id="emptyState" style="display:none;">
+
+<i class="fa-solid fa-cake-candles"></i>
+
+<h2>Your cart is empty</h2>
+
+<p>Browse the gallery, customize a cake, and hit "Add to Cart" to see it here.</p>
+
+<a href="gallery.html">Browse Gallery</a>
+
+</div>
+
+<script>
+
+let cart=[];
+
+/* Same weight multipliers used on the gallery + checkout pages, kept in sync */
+
+const weightMultiplier={
+
+"500g":1,
+
+"1 Kg":1.8,
+
+"2 Kg":3.4,
+
+"Custom":1
+
+};
+
+function parsePrice(priceStr){
+
+return Number(priceStr.replace(/[^0-9.]/g,""))||0;
+
+}
+
+function itemUnitPrice(item){
+
+const base=parsePrice(item.price);
+
+const mult=weightMultiplier[item.weight]||1;
+
+return Math.round(base*mult);
+
+}
+
+function saveCart(){
+
+localStorage.setItem("jiyasCakeCart",JSON.stringify(cart));
+
+}
+
+function renderCart(){
+
+const panel=document.getElementById("itemsPanel");
+
+panel.innerHTML="<h3>Cakes in Your Cart</h3>";
+
+cart.forEach(function(item){
+
+const lineTotal=itemUnitPrice(item)*item.qty;
+
+const row=document.createElement("div");
+
+row.className="item-row";
+
+row.innerHTML=
+
+"<div class=\"item-video\"><video autoplay muted loop playsinline><source src=\""+item.video+"\" type=\"video/mp4\"></video></div>"+
+
+"<div class=\"item-info\">"+
+
+"<h4>"+item.title+"</h4>"+
+
+"<div class=\"item-meta\"><b>"+item.weight+"</b>"+
+
+(item.message?" · Message: "+item.message:"")+
+
+(item.instructions?" · Note: "+item.instructions:"")+
+
+"</div>"+
+
+"<div class=\"item-bottom\">"+
+
+"<div class=\"item-qty\">"+
+
+"<button onclick=\"changeItemQty('"+item.id+"',-1)\">−</button>"+
+
+"<span>"+item.qty+"</span>"+
+
+"<button onclick=\"changeItemQty('"+item.id+"',1)\">+</button>"+
+
+"</div>"+
+
+"<span class=\"item-price\">₹"+lineTotal+"</span>"+
+
+"<button class=\"item-remove\" onclick=\"removeItem('"+item.id+"')\">Remove</button>"+
+
+"</div>"+
+
+"</div>";
+
+panel.appendChild(row);
+
+});
+
+updateTotals();
+
+}
+
+function cartTotal(){
+
+return cart.reduce(function(sum,item){
+
+return sum+itemUnitPrice(item)*item.qty;
+
+},0);
+
+}
+
+function cartItemCount(){
+
+return cart.reduce(function(sum,item){
+
+return sum+item.qty;
+
+},0);
+
+}
+
+function updateTotals(){
+
+const total=cartTotal();
+
+document.getElementById("itemCountRow").innerHTML=cartItemCount();
+
+document.getElementById("subtotalRow").innerHTML="₹"+total;
+
+document.getElementById("totalPrice").innerHTML="₹"+total;
+
+}
+
+function changeItemQty(id,delta){
+
+const item=cart.find(function(i){return i.id===id;});
+
+if(!item)return;
+
+item.qty=Math.max(1,item.qty+delta);
+
+saveCart();
+
+renderCart();
+
+}
+
+function removeItem(id){
+
+cart=cart.filter(function(i){return i.id!==id;});
+
+saveCart();
+
+if(cart.length===0){
+
+document.getElementById("cartWrap").style.display="none";
+
+document.getElementById("emptyState").style.display="block";
+
+return;
+
+}
+
+renderCart();
+
+}
+
+window.onload=function(){
+
+cart=JSON.parse(localStorage.getItem("jiyasCakeCart")||"[]");
+
+if(cart.length===0){
+
+document.getElementById("emptyState").style.display="block";
+
+return;
+
+}
+
+document.getElementById("cartWrap").style.display="grid";
+
+renderCart();
+
+};
+
+</script>
+
+</body>
+
+</html>

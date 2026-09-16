@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | JIYA'S CAKE</title>
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#F8F4EC;
+overflow-x:hidden;
+
+}
+
+/* Background */
+
+body::before{
+
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(#dac7b0 1px,transparent 1px);
+
+background-size:22px 22px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+/* Navbar */
+
+nav{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height: 65px;
+
+background:rgba(255,255,255,.65);
+
+backdrop-filter:blur(15px);
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 70px;
+
+box-shadow:0 2px 12px rgba(0,0,0,.06);
+
+z-index:100;
+
+}
+
+.logo{
+
+font-size:40px;
+font-family:"Playfair Display";
+font-weight:900;
+color:#9A6845;
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+gap:40px;
+list-style:none;
+
+}
+
+nav ul li{
+
+font-size:18px;
+font-weight:500;
+cursor:pointer;
+transition:.3s;
+
+}
+
+nav ul li:hover{
+
+color:#b5855a;
+
+}
+
+/* Main */
+
+.container{
+
+margin-top:65px;
+
+width:100%;
+height:calc(100vh - 65px);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:40px;
+
+}
+
+/* Left Side */
+
+.left{
+
+width:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+
+animation:leftMove 1s;
+
+}
+
+.cake-box{
+
+width:420px;
+height:550px;
+
+border-radius:35px;
+
+overflow:hidden;
+
+background:white;
+
+box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+position:relative;
+
+}
+
+.cake-box video{
+
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.6s;
+
+}
+
+.cake-box:hover video{
+
+transform:scale(1.05);
+
+}
+
+.tag{
+
+position:absolute;
+
+left:25px;
+bottom:25px;
+
+background:rgba(255,255,255,.75);
+
+backdrop-filter:blur(8px);
+
+padding:12px 25px;
+
+border-radius:30px;
+
+font-weight:600;
+
+color:#8D5D3B;
+
+}
+
+/* Right */
+
+.right{
+
+width:50%;
+
+display:flex;
+
+justify-content:center;
+
+animation:rightMove 1s;
+
+}
+
+.login-card{
+
+width:480px;
+
+background:rgba(255,255,255,.82);
+
+backdrop-filter:blur(15px);
+
+border-radius:35px;
+
+padding:45px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+}
+
+.login-card h1{
+
+font-size:46px;
+
+font-family:"Playfair Display";
+
+color:#9A6845;
+
+text-align:center;
+
+}
+
+.login-card p{
+
+text-align:center;
+
+margin-top:10px;
+
+color:#777;
+
+margin-bottom:35px;
+
+}
+
+/* Form error banner — mirrors Order_details.html's auth-error style */
+
+.form-error{
+
+background:#fdecea;
+
+border:1px solid #f3c6c1;
+
+color:#c0392b;
+
+font-size:14px;
+
+padding:12px 18px;
+
+border-radius:14px;
+
+margin-bottom:20px;
+
+text-align:center;
+
+display:none;
+
+}
+
+.form-error.show{
+
+display:block;
+
+}
+
+/* Input */
+
+.input-group{
+
+margin-bottom:25px;
+
+}
+
+.input-group label{
+
+display:block;
+
+font-weight:600;
+
+margin-bottom:10px;
+
+color:#7A5236;
+
+}
+
+.input-box{
+
+display:flex;
+
+align-items:center;
+
+background:#fff;
+
+border:2px solid #eadcc8;
+
+border-radius:40px;
+
+padding:0 20px;
+
+transition:.3s;
+
+}
+
+.input-box:focus-within{
+
+border-color:#B5855A;
+
+box-shadow:0 0 15px rgba(181,133,90,.18);
+
+}
+
+.input-box input{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+outline:none;
+
+font-size:16px;
+
+background:transparent;
+
+}
+
+.input-box i{
+
+color:#9A6845;
+
+font-size:18px;
+
+}
+
+.eye{
+
+cursor:pointer;
+
+}
+
+/* Options */
+
+.options{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-top:8px;
+
+margin-bottom:30px;
+
+font-size:15px;
+
+}
+
+.options label{
+
+display:flex;
+
+gap:8px;
+
+align-items:center;
+
+color:#555;
+
+}
+
+.options a{
+
+text-decoration:none;
+
+color:#9A6845;
+
+font-weight:600;
+
+}
+
+.options a:hover{
+
+text-decoration:underline;
+
+}
+
+/* Buttons */
+
+.btn{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:40px;
+
+background:#B5855A;
+
+color:white;
+
+font-size:18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+margin-bottom:18px;
+
+}
+
+.btn:hover{
+
+background:#9A6845;
+
+transform:translateY(-3px);
+
+}
+
+.btn:disabled{
+
+background:#ddd;
+
+cursor:not-allowed;
+
+transform:none;
+
+}
+
+.create{
+
+display:block;
+
+text-align:center;
+
+text-decoration:none;
+
+padding:15px;
+
+border-radius:40px;
+
+border:2px solid #B5855A;
+
+color:#9A6845;
+
+font-weight:600;
+
+transition:.35s;
+
+}
+
+.create:hover{
+
+background:#B5855A;
+
+color:white;
+
+}
+
+/* Divider */
+
+.divider{
+
+display:flex;
+
+align-items:center;
+
+margin:35px 0;
+
+}
+
+.divider::before,
+.divider::after{
+
+content:"";
+
+flex:1;
+
+height:1px;
+
+background:#ddd;
+
+}
+
+.divider span{
+
+padding:0 15px;
+
+color:#999;
+
+font-size:14px;
+
+}
+
+/* Social */
+
+.social{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+}
+
+.social a{
+
+width:50px;
+height:50px;
+
+border-radius:50%;
+
+background:white;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:20px;
+
+text-decoration:none;
+
+color:#9A6845;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.social a:hover{
+
+background:#B5855A;
+
+color:white;
+
+transform:translateY(-5px);
+
+}
+
+/* Bottom */
+
+.bottom{
+
+margin-top:35px;
+
+text-align:center;
+
+font-size:15px;
+
+color:#777;
+
+}
+
+.bottom a{
+
+color:#9A6845;
+
+font-weight:600;
+
+text-decoration:none;
+
+}
+
+.bottom a:hover{
+
+text-decoration:underline;
+
+}
+
+/* Animations */
+
+@keyframes leftMove{
+
+from{
+
+opacity:0;
+transform:translateX(-70px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateX(0);
+
+}
+
+}
+
+@keyframes rightMove{
+
+from{
+
+opacity:0;
+transform:translateX(70px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateX(0);
+
+}
+
+}
+/* Responsive */
+
+@media(max-width:1100px){
+
+.container{
+
+flex-direction:column;
+height:auto;
+padding:140px 20px 50px;
+
+}
+
+.left,
+.right{
+
+width:100%;
+
+}
+
+.left{
+
+margin-bottom:40px;
+
+}
+
+.cake-box{
+
+width:340px;
+height:430px;
+
+}
+
+.login-card{
+
+width:100%;
+max-width:450px;
+
+}
+
+nav{
+
+padding:0 25px;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+
+<nav>
+
+<div class="logo">
+
+JIYA'S CAKE
+
+</div>
+
+<ul>
+
+<li onclick="location.href='index.html'">Home</li>
+<li onclick="location.href='gallery.html'">Cake Gallery</li>
+<li onclick="location.href='gallery.html'">Order Cake</li>
+<li>Contact</li>
+
+</ul>
+
+</nav>
+
+<!-- Main -->
+
+<div class="container">
+
+<!-- Left Side -->
+
+<div class="left">
+
+<div class="cake-box">
+
+<video autoplay muted loop playsinline>
+    <source src="assets/videos/login_cake.mp4" type="video/mp4">
+</video>
+
+
+</div>
+
+</div>
+
+<!-- Right Side -->
+
+<div class="right">
+
+<div class="login-card">
+
+<h1>Welcome Back</h1>
+
+<p>
+
+Login to continue your sweet journey with JIYA'S CAKE
+
+</p>
+
+<p class="form-error" id="formError"></p>
+
+<form id="loginForm">
+
+<div class="input-group">
+
+<label>Email Address</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-envelope"></i>
+
+<input
+type="email"
+id="email"
+placeholder="Enter your email">
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Password</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password">
+
+<i
+class="fa-solid fa-eye eye"
+id="togglePassword">
+
+</i>
+
+</div>
+
+</div>
+
+<div class="options">
+
+<label>
+
+<input type="checkbox">
+
+Remember Me
+
+</label>
+
+<a href="#">
+
+Forgot Password?
+
+</a>
+
+</div>
+
+<button
+class="btn"
+id="submitBtn"
+type="submit">
+
+Login
+
+</button>
+
+<a
+href="register.html"
+class="create">
+
+Create New Account
+
+</a>
+
+<div class="divider">
+
+<span>
+
+or continue with
+
+</span>
+
+</div>
+
+<div class="social">
+
+<a onclick="signInWithGoogle()"><i class="fab fa-google"></i></a>
+
+<a onclick="comingSoon('Facebook')"><i class="fab fa-facebook-f"></i></a>
+
+<a onclick="comingSoon('Instagram')"><i class="fab fa-instagram"></i></a>
+
+</div>
+
+<div class="bottom">
+
+Back to
+
+<a href="index.html">
+
+Home Page
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ============================================================
+     FIREBASE SETUP — same project as Order_details.html / register.html
+     No extra setup needed here beyond what register.html already
+     requires (Email/Password + Google enabled under Authentication,
+     Firestore turned on for the "users" collection).
+     ============================================================ -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+
+const firebaseConfig={
+
+apiKey:"AIzaSyBLkIEo6Cdnh-9-CanKo5EhqgdRyghmPEw",
+
+authDomain:"jiya-s-cake.firebaseapp.com",
+
+projectId:"jiya-s-cake",
+
+storageBucket:"jiya-s-cake.firebasestorage.app",
+
+messagingSenderId:"319442668206",
+
+appId:"1:319442668206:web:2f3cf2bdce218c2816bb3f"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const auth=firebase.auth();
+
+const db=firebase.firestore();
+
+</script>
+
+<script>
+
+/* Show Password */
+
+const togglePassword=document.getElementById("togglePassword");
+
+const password=document.getElementById("password");
+
+togglePassword.addEventListener("click",()=>{
+
+const type=password.getAttribute("type")==="password"
+?
+"text"
+:
+"password";
+
+password.setAttribute("type",type);
+
+togglePassword.classList.toggle("fa-eye");
+
+togglePassword.classList.toggle("fa-eye-slash");
+
+});
+
+function showFormError(msg){
+
+const el=document.getElementById("formError");
+
+el.innerHTML=msg;
+
+el.classList.add("show");
+
+}
+
+function hideFormError(){
+
+document.getElementById("formError").classList.remove("show");
+
+}
+
+function comingSoon(name){
+
+alert(name+" login isn't set up yet — use email or Google for now.");
+
+}
+
+/* If someone signs in with Google for the first time here (rather than
+
+   via register.html), make sure they still get a Firestore profile doc
+
+   so Order History / Admin have something to read later */
+
+function ensureProfile(user){
+
+return db.collection("users").doc(user.uid).get().then(function(doc){
+
+if(!doc.exists){
+
+return db.collection("users").doc(user.uid).set({
+
+fullname:user.displayName||"",
+
+username:"",
+
+email:user.email||"",
+
+mobile:"",
+
+address:"",
+
+createdAt:firebase.firestore.FieldValue.serverTimestamp()
+
+});
+
+}
+
+});
+
+}
+
+function signInWithGoogle(){
+
+hideFormError();
+
+const provider=new firebase.auth.GoogleAuthProvider();
+
+auth.signInWithPopup(provider).then(function(result){
+
+return ensureProfile(result.user);
+
+}).then(function(){
+
+window.location.href="index.html";
+
+}).catch(function(err){
+
+showFormError(err.message);
+
+});
+
+}
+
+/* Real email/password login */
+
+document
+.getElementById("loginForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+hideFormError();
+
+let email=document.getElementById("email").value.trim();
+
+let pass=password.value.trim();
+
+if(email===""){
+
+showFormError("Please enter your email address.");
+
+return;
+
+}
+
+if(pass===""){
+
+showFormError("Please enter your password.");
+
+return;
+
+}
+
+const submitBtn=document.getElementById("submitBtn");
+
+submitBtn.disabled=true;
+
+submitBtn.innerHTML="Logging in...";
+
+auth.signInWithEmailAndPassword(email,pass).then(function(){
+
+window.location.href="index.html";
+
+}).catch(function(err){
+
+submitBtn.disabled=false;
+
+submitBtn.innerHTML="Login";
+
+if(err.code==="auth/invalid-credential"||err.code==="auth/wrong-password"||err.code==="auth/user-not-found"){
+
+showFormError("Incorrect email or password. New here? Use Create New Account below.");
+
+}else{
+
+showFormError(err.message);
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
