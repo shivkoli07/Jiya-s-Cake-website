@@ -22,7 +22,11 @@
 
 <br>
 
-[**📂 Repository**](https://github.com/shivkoli07/Jiya-s-Cake-website) &nbsp;•&nbsp; [**📸 Instagram**](https://www.instagram.com/jiya_cake?stkn=emN5NGU2dHRhcWc0) &nbsp;•&nbsp; [**📍 Location**](https://maps.app.goo.gl/YQWTVbo8GhnuB9rR7)
+[![Live Demo](https://img.shields.io/badge/🌐%20LIVE%20DEMO-jiya--s--cake.web.app-E91E63?style=for-the-badge)](https://jiya-s-cake.web.app/)
+
+<br>
+
+[**🌐 Live Site**](https://jiya-s-cake.web.app/) &nbsp;•&nbsp; [**📂 Repository**](https://github.com/shivkoli07/Jiya-s-Cake-website) &nbsp;•&nbsp; [**📸 Instagram**](https://www.instagram.com/jiya_cake?stkn=emN5NGU2dHRhcWc0) &nbsp;•&nbsp; [**📍 Location**](https://maps.app.goo.gl/YQWTVbo8GhnuB9rR7)
 
 </div>
 
@@ -102,7 +106,7 @@ Cancellation notices are also displayed. Firestore rules guarantee customers onl
 
 - 👩‍🍳 **About Us** — meet baker & owner **Shital Pramod Koli**, 100% pure vegetarian, freshly made cakes
 - ❓ **FAQs** — 15+ answers on ingredients, delivery (5 KM local radius around Dhule), pick-up, and payments
-- 📞 **Contact Us** — map link, phone, email, and a message form wired to Firestore
+- 📞 **Contact Us** — business location map link and a message form wired to Firestore
 - ⭐ **Rate Us** — star ratings for taste and delivery, plus written reviews
 
 ---
@@ -240,6 +244,8 @@ service cloud.firestore {
 
 ## 🚀 Getting Started
 
+> 🌐 **Want a quick look first?** Visit the deployed site: **[JIYA'S CAKE](https://jiya-s-cake.web.app/)**
+
 ### Prerequisites
 
 ![Node](https://img.shields.io/badge/Node.js-Required%20for%20Firebase%20CLI-339933?style=flat-square&logo=nodedotjs&logoColor=white)
@@ -266,10 +272,6 @@ firebase login
 firebase init hosting
 firebase deploy
 ```
-
-> [!NOTE]
-> Add your own Firebase project configuration to the app and create at least one document in the `admins` collection (document ID = the admin's Auth UID) to unlock the dashboard.
-
 ---
 
 ## 📞 Contact
@@ -277,8 +279,7 @@ firebase deploy
 | | |
 |---|---|
 | 🎂 **Bakery** | Jiya's Cake — Dhule |
-| 📱 **Phone** | +91 89997 09289 |
-| 📧 **Email** | shivkoli071205@gmail.com |
+| 🌐 **Live Site** | [jiya-s-cake.web.app](https://jiya-s-cake.web.app/) |
 | 📸 **Instagram** | [@jiya_cake](https://www.instagram.com/jiya_cake?stkn=emN5NGU2dHRhcWc0) |
 | 📍 **Map** | [Google Maps](https://maps.app.goo.gl/YQWTVbo8GhnuB9rR7) |
 
