@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FAQs | JIYA'S CAKE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#F8F4EC;
+overflow-x:hidden;
+color:#5D4632;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(#d7c4ae 1px,transparent 1px);
+
+background-size:22px 22px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+/* Navbar */
+
+nav{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:70px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 70px;
+
+background:rgba(255,255,255,.72);
+
+backdrop-filter:blur(18px);
+
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-family:"Playfair Display";
+
+font-size:38px;
+
+font-weight:900;
+
+color:#9A6845;
+
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:35px;
+
+}
+
+nav ul li{
+
+cursor:pointer;
+
+font-weight:500;
+
+transition:.35s;
+
+}
+
+nav ul li:hover{
+
+color:#B5855A;
+
+}
+
+.icons{
+
+display:flex;
+
+gap:20px;
+
+font-size:20px;
+
+color:#9A6845;
+
+align-items:center;
+
+}
+
+.icons i{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.icons i:hover{
+
+transform:scale(1.15);
+
+}
+
+/* Hero */
+
+.hero{
+
+padding-top:140px;
+
+padding-bottom:30px;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-family:"Playfair Display";
+
+font-size:52px;
+
+color:#8D5D3B;
+
+margin-bottom:10px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+color:#777;
+
+}
+
+/* FAQ Container */
+
+.faq-wrap{
+
+width:92%;
+
+max-width:900px;
+
+margin:0 auto 90px auto;
+
+}
+
+.faq-item{
+
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(15px);
+
+border-radius:20px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+margin-bottom:18px;
+
+overflow:hidden;
+
+border:1px solid #eee0cd;
+
+transition:.3s;
+
+}
+
+.faq-question{
+
+padding:20px 24px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+cursor:pointer;
+
+font-family:"Playfair Display";
+
+font-size:19px;
+
+color:#8D5D3B;
+
+font-weight:700;
+
+}
+
+.faq-question i{
+
+color:#9A6845;
+
+transition:.3s;
+
+}
+
+.faq-item.active .faq-question i{
+
+transform:rotate(180deg);
+
+}
+
+.faq-answer{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:max-height .3s ease-out, padding .3s ease;
+
+padding:0 24px;
+
+font-size:15px;
+
+color:#666;
+
+line-height:26px;
+
+}
+
+.faq-item.active .faq-answer{
+
+max-height:200px;
+
+padding:0 24px 20px 24px;
+
+}
+
+@media(max-width:768px){
+
+nav{
+
+padding:0 25px;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">JIYA'S CAKE</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">Home</li>
+<li onclick="window.location.href='gallery.html'">Gallery</li>
+<li onclick="window.location.href='about-us.html'">About</li>
+<li onclick="window.location.href='contact.html'">Contact</li>
+<li onclick="window.location.href='rate-us.html'">Rate Us</li>
+
+</ul>
+
+<div class="icons">
+
+<i class="fa-solid fa-cart-shopping" onclick="window.location.href='cart.html'" style="cursor:pointer;" title="Cart"></i>
+
+<i class="fa-solid fa-receipt" onclick="window.location.href='order-history.html'" style="cursor:pointer;" title="My Orders"></i>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>Frequently Asked Questions</h1>
+
+<p>Got questions about our cakes, baking process, or deliveries? Find answers here!</p>
+
+</section>
+
+<div class="faq-wrap">
+
+<!-- FAQ 1 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>Are your cakes 100% vegetarian?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+Yes! Only 100% pure vegetarian cakes are made here.
+
+</div>
+
+</div>
+
+<!-- FAQ 2 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>Who bakes these cakes?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+Shital Pramod Koli is the baker and owner of this business, and she herself bakes fresh and delicious cakes with love.
+
+</div>
+
+</div>
+
+<!-- FAQ 3 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>What kinds of cakes can we get?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+You can get different types of delicious cakes such as Chocolate, Pineapple, Truffle, Dark Chocolate, Black Forest, Red Velvet, Rasmalai, Blueberry, and more.
+
+</div>
+
+</div>
+
+<!-- FAQ 4 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>What categories of cakes do you have?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+We offer designer and customized cakes across categories like Birthday, Wedding, Anniversary, Engagement, and special Celebrations.
+
+</div>
+
+</div>
+
+<!-- FAQ 5 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>Where can we get the cakes delivered? Are deliveries available?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+Home delivery is available only within a 5 KM radius from our shop. If you live farther away, you can place your order online and pick up your cake by visiting our shop directly.
+
+</div>
+
+</div>
+
+<!-- FAQ 6 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>Who is eligible to place an online order?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+Currently, online booking and delivery services are exclusively for people living in Dhule.
+
+</div>
+
+</div>
+
+<!-- FAQ 7 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>How do I place an order?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+Simply browse our gallery, select your favorite cake, choose your preferred weight and customizations, add it to your cart, and proceed to checkout and payment.
+
+</div>
+
+</div>
+
+<!-- FAQ 8 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>Can I customize a cake design or message?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+Yes! You can add personalized text messages to be written on the cake and provide special instructions for design tweaks or specific theme requests.
+
+</div>
+
+</div>
+
+<!-- FAQ 9 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>How does the payment process work?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+We make checkout easy through direct UPI scanning (via GPay, PhonePe, Paytm, etc.) followed by email notification so we can instantly confirm your payment.
+
+</div>
+
+</div>
+
+<!-- FAQ 10 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>How will I know when my order is confirmed?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+After payment and notification, our team will review your order and call you to confirm your delivery address and exact delivery time. You can also track your order status in real time under "Order History".
+
+</div>
+
+</div>
+
+<!-- FAQ 11 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>Can I modify or cancel my order after placing it?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+If you need to make urgent changes or cancellations, please contact us immediately over phone or email before preparation begins.
+
+</div>
+
+</div>
+
+<!-- FAQ 12 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>Do you offer multi-tier cakes for grand weddings?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+Yes, we specialize in gorgeous 2-tier, 3-tier, and wedding engagement cakes crafted to make your grand events unforgettable.
+
+</div>
+
+</div>
+
+<!-- FAQ 13 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>Are your cakes freshly baked for each order?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+Absolutely! Every single cake is baked fresh using premium ingredients and fresh cream right after your order is confirmed.
+
+</div>
+
+</div>
+
+<!-- FAQ 14 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>How should I store my cake after delivery?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+Fresh cream and fruit cakes should be kept refrigerated and consumed within 24–48 hours for the best taste and texture. Bring them to room temperature for 10–15 minutes before serving.
+
+</div>
+
+</div>
+
+<!-- FAQ 15 -->
+
+<div class="faq-item">
+
+<div class="faq-question" onclick="toggleFaq(this)">
+
+<span>How can I contact customer support?</span>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+<div class="faq-answer">
+
+You can reach out to us through the Contact page on our website or email us directly at orders@jiyascake.com for any inquiries.
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function toggleFaq(element){
+
+const parent=element.parentElement;
+
+const wasActive=parent.classList.contains("active");
+
+// Close all open FAQs
+
+document.querySelectorAll(".faq-item").forEach(item=>{
+
+item.classList.remove("active");
+
+});
+
+// If it wasn't active before, open it
+
+if(!wasActive){
+
+parent.classList.add("active");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

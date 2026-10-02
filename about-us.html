@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | JIYA'S CAKE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#F8F4EC;
+overflow-x:hidden;
+color:#5D4632;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(#d7c4ae 1px,transparent 1px);
+
+background-size:22px 22px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+/* Navbar */
+
+nav{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:70px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 70px;
+
+background:rgba(255,255,255,.72);
+
+backdrop-filter:blur(18px);
+
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-family:"Playfair Display";
+
+font-size:38px;
+
+font-weight:900;
+
+color:#9A6845;
+
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:35px;
+
+}
+
+nav ul li{
+
+cursor:pointer;
+
+font-weight:500;
+
+transition:.35s;
+
+}
+
+nav ul li:hover{
+
+color:#B5855A;
+
+}
+
+.icons{
+
+display:flex;
+
+gap:20px;
+
+font-size:20px;
+
+color:#9A6845;
+
+align-items:center;
+
+}
+
+.icons i{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.icons i:hover{
+
+transform:scale(1.15);
+
+}
+
+/* Hero */
+
+.hero{
+
+padding-top:140px;
+
+padding-bottom:30px;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-family:"Playfair Display";
+
+font-size:52px;
+
+color:#8D5D3B;
+
+margin-bottom:10px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+color:#777;
+
+}
+
+/* About Layout */
+
+.about-wrap{
+
+width:92%;
+
+max-width:1000px;
+
+margin:0 auto 90px auto;
+
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(15px);
+
+border-radius:30px;
+
+box-shadow:0 20px 35px rgba(0,0,0,.08);
+
+padding:50px;
+
+display:flex;
+
+gap:50px;
+
+align-items:center;
+
+}
+
+.baker-photo-box{
+
+width:350px;
+
+height:420px;
+
+border-radius:24px;
+
+overflow:hidden;
+
+flex-shrink:0;
+
+box-shadow:0 15px 30px rgba(0,0,0,.1);
+
+background:#eee0cd;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+position:relative;
+
+}
+
+.baker-photo-box img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+.baker-info{
+
+flex:1;
+
+}
+
+.baker-info h2{
+
+font-family:"Playfair Display";
+
+font-size:36px;
+
+color:#8D5D3B;
+
+margin-bottom:6px;
+
+}
+
+.baker-info h4{
+
+font-size:16px;
+
+color:#B5855A;
+
+font-weight:600;
+
+margin-bottom:20px;
+
+text-transform:uppercase;
+
+letter-spacing:1px;
+
+}
+
+.baker-info p{
+
+font-size:15px;
+
+color:#666;
+
+line-height:28px;
+
+margin-bottom:24px;
+
+}
+
+.instagram-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:14px 30px;
+
+border-radius:40px;
+
+background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+
+color:#fff;
+
+text-decoration:none;
+
+font-weight:600;
+
+font-size:16px;
+
+transition:.3s;
+
+box-shadow:0 10px 20px rgba(220,39,67,.2);
+
+}
+
+.instagram-btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 15px 25px rgba(220,39,67,.3);
+
+}
+
+@media(max-width:900px){
+
+.about-wrap{
+
+flex-direction:column;
+
+padding:30px;
+
+text-align:center;
+
+}
+
+.baker-photo-box{
+
+width:100%;
+
+max-width:320px;
+
+height:380px;
+
+margin:0 auto;
+
+}
+
+nav{
+
+padding:0 25px;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">JIYA'S CAKE</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">Home</li>
+<li onclick="window.location.href='gallery.html'">Gallery</li>
+<li onclick="window.location.href='contact.html'">Contact</li>
+<li onclick="window.location.href='faqs.html'">FAQs</li>
+<li onclick="window.location.href='rate-us.html'">Rate Us</li>
+
+</ul>
+
+<div class="icons">
+
+<i class="fa-solid fa-cart-shopping" onclick="window.location.href='cart.html'" style="cursor:pointer;" title="Cart"></i>
+
+<i class="fa-solid fa-receipt" onclick="window.location.href='order-history.html'" style="cursor:pointer;" title="My Orders"></i>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>About Our Bakery</h1>
+
+<p>Discover the passion and sweet dedication behind every cake we bake.</p>
+
+</section>
+
+<div class="about-wrap">
+
+<!-- Baker Photo -->
+
+<div class="baker-photo-box">
+
+<!-- Replace 'assets/images/baker.jpg' with your actual photo file path -->
+
+<img src="assets/images/baker.jpg" alt="Shital Pramod Koli - Baker & Owner" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fa-solid fa-user-chef\' style=\'font-size:80px; color:#B5855A;\'></i>';">
+
+</div>
+
+<!-- Baker Bio Info -->
+
+<div class="baker-info">
+
+<h2>Shital Pramod Koli</h2>
+
+<h4>Baker &amp; Owner — Jiya's Cake</h4>
+
+<p>
+Welcome to Jiya's Cake! I am Shital Pramod Koli, the passionate baker and proud owner behind this business. Every single cake, from our classic rich chocolates to custom designer creations, is baked fresh by me with utmost love, premium 100% pure vegetarian ingredients, and meticulous attention to detail.
+</p>
+
+<p>
+Whether you are celebrating a birthday, a wedding, an anniversary, or any milestone moment in Dhule, my goal is to make your celebrations sweeter and unforgettable.
+</p>
+
+<a href="https://www.instagram.com/jiya_cake?stkn=emN5NGU2dHRhcWc0" target="_blank" class="instagram-btn">
+
+<i class="fa-brands fa-instagram" style="font-size:20px;"></i> Connect with us on Instagram
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

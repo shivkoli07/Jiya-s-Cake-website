@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact Us | JIYA'S CAKE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+
+background:#F8F4EC;
+overflow-x:hidden;
+color:#5D4632;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(#d7c4ae 1px,transparent 1px);
+
+background-size:22px 22px;
+
+opacity:.35;
+
+z-index:-2;
+
+}
+
+/* Navbar */
+
+nav{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:70px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:0 70px;
+
+background:rgba(255,255,255,.72);
+
+backdrop-filter:blur(18px);
+
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-family:"Playfair Display";
+
+font-size:38px;
+
+font-weight:900;
+
+color:#9A6845;
+
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:35px;
+
+}
+
+nav ul li{
+
+cursor:pointer;
+
+font-weight:500;
+
+transition:.35s;
+
+}
+
+nav ul li:hover{
+
+color:#B5855A;
+
+}
+
+.icons{
+
+display:flex;
+
+gap:20px;
+
+font-size:20px;
+
+color:#9A6845;
+
+align-items:center;
+
+}
+
+.icons i{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.icons i:hover{
+
+transform:scale(1.15);
+
+}
+
+/* Hero */
+
+.hero{
+
+padding-top:140px;
+
+padding-bottom:30px;
+
+text-align:center;
+
+}
+
+.hero h1{
+
+font-family:"Playfair Display";
+
+font-size:52px;
+
+color:#8D5D3B;
+
+margin-bottom:10px;
+
+}
+
+.hero p{
+
+font-size:16px;
+
+color:#777;
+
+}
+
+/* Contact Layout */
+
+.contact-wrap{
+
+width:92%;
+
+max-width:1100px;
+
+margin:0 auto 90px auto;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:40px;
+
+align-items:start;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.85);
+
+backdrop-filter:blur(15px);
+
+border-radius:28px;
+
+box-shadow:0 20px 35px rgba(0,0,0,.08);
+
+padding:40px;
+
+}
+
+.card h2{
+
+font-family:"Playfair Display";
+
+font-size:28px;
+
+color:#8D5D3B;
+
+margin-bottom:20px;
+
+}
+
+.info-item{
+
+display:flex;
+
+align-items:flex-start;
+
+gap:16px;
+
+margin-bottom:24px;
+
+}
+
+.info-item i{
+
+font-size:22px;
+
+color:#9A6845;
+
+margin-top:4px;
+
+}
+
+.info-item h4{
+
+font-size:16px;
+
+font-weight:600;
+
+color:#5D4632;
+
+margin-bottom:4px;
+
+}
+
+.info-item p,
+.info-item a{
+
+font-size:15px;
+
+color:#666;
+
+text-decoration:none;
+
+line-height:24px;
+
+}
+
+.info-item a:hover{
+
+color:#B5855A;
+
+text-decoration:underline;
+
+}
+
+.map-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+margin-top:8px;
+
+padding:10px 22px;
+
+border-radius:30px;
+
+background:#4285F4;
+
+color:#fff;
+
+text-decoration:none;
+
+font-weight:600;
+
+font-size:14px;
+
+transition:.3s;
+
+}
+
+.map-btn:hover{
+
+background:#3367D6;
+
+transform:translateY(-2px);
+
+}
+
+/* Form Styles */
+
+.form-group{
+
+margin-bottom:20px;
+
+}
+
+.form-group label{
+
+display:block;
+
+font-size:14px;
+
+font-weight:600;
+
+color:#7A5236;
+
+margin-bottom:8px;
+
+}
+
+.input-box{
+
+width:100%;
+
+background:#fff;
+
+border:2px solid #eadcc8;
+
+border-radius:18px;
+
+padding:14px 18px;
+
+display:flex;
+
+align-items:center;
+
+transition:.3s;
+
+}
+
+.input-box:focus-within{
+
+border-color:#B5855A;
+
+}
+
+.input-box input,
+.input-box textarea{
+
+width:100%;
+
+border:none;
+
+outline:none;
+
+background:transparent;
+
+font-size:15px;
+
+color:#5D4632;
+
+font-family:Poppins,sans-serif;
+
+}
+
+.input-box textarea{
+
+height:120px;
+
+resize:none;
+
+}
+
+.send-btn{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:40px;
+
+background:#B5855A;
+
+color:white;
+
+font-size:17px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+margin-top:10px;
+
+}
+
+.send-btn:hover{
+
+background:#8D5D3B;
+
+}
+
+.send-btn:disabled{
+
+background:#ddd;
+
+cursor:not-allowed;
+
+}
+
+/* Toast */
+
+.toast{
+
+position:fixed;
+
+bottom:30px;
+
+left:50%;
+
+transform:translateX(-50%) translateY(20px);
+
+background:#5D4632;
+
+color:#fff;
+
+padding:14px 28px;
+
+border-radius:40px;
+
+font-size:14px;
+
+font-weight:500;
+
+box-shadow:0 15px 30px rgba(0,0,0,.2);
+
+opacity:0;
+
+visibility:hidden;
+
+transition:.35s;
+
+z-index:6000;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.toast i{
+
+color:#8fd19e;
+
+}
+
+.toast.show{
+
+opacity:1;
+
+visibility:visible;
+
+transform:translateX(-50%) translateY(0);
+
+}
+
+@media(max-width:900px){
+
+.contact-wrap{
+
+grid-template-columns:1fr;
+
+}
+
+nav{
+
+padding:0 25px;
+
+}
+
+nav ul{
+
+display:none;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">JIYA'S CAKE</div>
+
+<ul>
+
+<li onclick="window.location.href='index.html'">Home</li>
+<li onclick="window.location.href='gallery.html'">Gallery</li>
+<li onclick="window.location.href='about-us.html'">About</li>
+<li onclick="window.location.href='faqs.html'">FAQs</li>
+<li onclick="window.location.href='rate-us.html'">Rate Us</li>
+
+</ul>
+
+<div class="icons">
+
+<i class="fa-solid fa-cart-shopping" onclick="window.location.href='cart.html'" style="cursor:pointer;" title="Cart"></i>
+
+<i class="fa-solid fa-receipt" onclick="window.location.href='order-history.html'" style="cursor:pointer;" title="My Orders"></i>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>Get in Touch</h1>
+
+<p>We'd love to hear from you! Reach out for custom orders, queries, or feedback.</p>
+
+</section>
+
+<div class="contact-wrap">
+
+<!-- Left: Contact Details -->
+
+<div class="card">
+
+<h2>Contact Information</h2>
+
+<div class="info-item">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<div>
+
+<h4>Location</h4>
+
+<p>Dhule, Maharashtra</p>
+
+<a href="https://maps.app.goo.gl/YQWTVbo8GhnuB9rR7" target="_blank" class="map-btn">
+
+<i class="fa-solid fa-map-location-dot"></i> View on Google Maps
+
+</a>
+
+</div>
+
+</div>
+
+<div class="info-item">
+
+<i class="fa-solid fa-phone"></i>
+
+<div>
+
+<h4>Phone Number</h4>
+
+<a href="tel:8999709289">+91 89997 09289</a>
+
+</div>
+
+</div>
+
+<div class="info-item">
+
+<i class="fa-solid fa-envelope"></i>
+
+<div>
+
+<h4>Email Address</h4>
+
+<a href="mailto:shivkoli071205@gmail.com">shivkoli071205@gmail.com</a>
+
+</div>
+
+</div>
+
+<div class="info-item">
+
+<i class="fa-solid fa-clock"></i>
+
+<div>
+
+<h4>Business Hours</h4>
+
+<p>Monday – Sunday: 9:00 AM – 9:00 PM</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Right: Send Message Form -->
+
+<div class="card">
+
+<h2>Send a Message</h2>
+
+<form id="contactForm" onsubmit="submitMessage(event)">
+
+<div class="form-group">
+
+<label>Your Name</label>
+
+<div class="input-box">
+
+<input type="text" id="contactName" placeholder="Enter your full name" required>
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>Your Email</label>
+
+<div class="input-box">
+
+<input type="email" id="contactEmail" placeholder="Enter your email address" required>
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>Message</label>
+
+<div class="input-box">
+
+<textarea id="contactMessage" placeholder="How can we help you with your cake order?" required></textarea>
+
+</div>
+
+</div>
+
+<button type="submit" class="send-btn" id="sendBtn">Send Message</button>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- Toast Notification -->
+
+<div class="toast" id="toast">
+
+<i class="fa-solid fa-circle-check"></i> Message sent successfully! We will get back to you soon.
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+
+const firebaseConfig={
+
+apiKey:"AIzaSyBLkIEo6Cdnh-9-CanKo5EhqgdRyghmPEw",
+
+authDomain:"jiya-s-cake.firebaseapp.com",
+
+projectId:"jiya-s-cake",
+
+storageBucket:"jiya-s-cake.firebasestorage.app",
+
+messagingSenderId:"319442668206",
+
+appId:"1:319442668206:web:2f3cf2bdce218c2816bb3f"
+
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db=firebase.firestore();
+
+function submitMessage(e){
+
+e.preventDefault();
+
+const name=document.getElementById("contactName").value.trim();
+
+const email=document.getElementById("contactEmail").value.trim();
+
+const message=document.getElementById("contactMessage").value.trim();
+
+const btn=document.getElementById("sendBtn");
+
+btn.disabled=true;
+
+btn.innerHTML="Sending...";
+
+db.collection("messages").add({
+
+name:name,
+
+email:email,
+
+message:message,
+
+createdAt:firebase.firestore.FieldValue.serverTimestamp()
+
+}).then(()=>{
+
+const toast=document.getElementById("toast");
+
+toast.classList.add("show");
+
+setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},3000);
+
+document.getElementById("contactForm").reset();
+
+btn.disabled=false;
+
+btn.innerHTML="Send Message";
+
+}).catch((err)=>{
+
+alert("Error sending message: "+err.message);
+
+btn.disabled=false;
+
+btn.innerHTML="Send Message";
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
