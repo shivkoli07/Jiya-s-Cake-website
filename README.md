@@ -251,29 +251,6 @@ service cloud.firestore {
 ![Node](https://img.shields.io/badge/Node.js-Required%20for%20Firebase%20CLI-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 ![Firebase CLI](https://img.shields.io/badge/Firebase%20CLI-firebase--tools-FFCA28?style=flat-square&logo=firebase&logoColor=black)
 
-### Run Locally
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/shivkoli07/Jiya-s-Cake-website.git
-
-# 2. Enter the project folder
-cd Jiya-s-Cake-website
-```
-
-3. Open the folder in **VS Code**.
-4. Launch `index.html` with the **Live Server** extension.
-
-### Deploy to Firebase
-
-```bash
-npm install -g firebase-tools
-firebase login
-firebase init hosting
-firebase deploy
-```
----
-
 ## 📞 Contact
 
 | | |
